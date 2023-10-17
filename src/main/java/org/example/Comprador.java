@@ -5,11 +5,11 @@ class Comprador {
     private int vuelto;
 
     public Comprador(Moneda m, int cualBebida, Expendedor exp) {
-        Bebida b = exp.comprarBebida(m, cualBebida);
-        if (b == null) {
+        Producto p = exp.comprarProducto(m, cualBebida);
+        if (p == null) {
             sonido = null;
         } else {
-            sonido = b.beber();
+            sonido = p.consumir();
         }
         Moneda aux;
         aux = exp.getVuelto();
@@ -23,7 +23,7 @@ class Comprador {
         return vuelto;
     }
 
-    public String queBebiste() {
+    public String queConsumiste() {
         return sonido;
     }
 }

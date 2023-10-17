@@ -5,6 +5,8 @@ class Expendedor {
     private Deposito sprite;
     private DepositoM monVu;
     private int precio;
+
+    //****SACAR****
     public static final int COCA = 1;
     public static final int SPRITE = 2;
 
@@ -19,7 +21,7 @@ class Expendedor {
         }
     }
 
-    public Bebida comprarBebida(Moneda m, int w) {
+    public Bebida comprarProducto(Moneda m, int w) {
         if (m != null) {
             if (m.getValor() >= precio) {
                 int nb = (m.getValor() - precio) / 100;
