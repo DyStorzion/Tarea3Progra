@@ -2,21 +2,22 @@ package org.example;
 
 import java.util.ArrayList;
 
-class Deposito {
-    private ArrayList<Bebida> arrb;
+class Deposito <T>{
+    private ArrayList<T> almacen;
 
     public Deposito() {
-        arrb = new ArrayList<Bebida>();
+        almacen = new ArrayList<T>();
     }
 
-    public void addBebida(Bebida b) {
-        arrb.add(b);
+    public void addElemento(T elemento) {
+        almacen.add(elemento);
     }
 
-    public Bebida getBebida() {
-        if (arrb.size() == 0) return null;
+    public T getElemento() {
+        if (almacen.size() == 0)
+            return null;
         else {
-            return arrb.remove(0);
+            return almacen.remove(0);
         }
     }
 }
