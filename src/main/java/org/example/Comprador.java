@@ -4,7 +4,8 @@ class Comprador {
     private String sonido;
     private int vuelto;
 
-    public Comprador(Moneda moneda, InfoProducto opcionProducto, Expendedor expendedor) {
+    public Comprador(Moneda moneda, InfoProducto opcionProducto, Expendedor expendedor)
+            throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
         Producto p = expendedor.comprarProducto(moneda, opcionProducto);
         if (p == null) {
             sonido = null;
