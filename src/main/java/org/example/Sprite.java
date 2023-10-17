@@ -1,3 +1,5 @@
+package org.example;
+
 class Sprite extends Bebida {
     public Sprite(int serie) {
         super(serie);

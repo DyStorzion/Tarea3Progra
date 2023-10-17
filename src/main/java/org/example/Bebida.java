@@ -1,3 +1,5 @@
+package org.example;
+
 abstract class Bebida {
     private int serie;
 

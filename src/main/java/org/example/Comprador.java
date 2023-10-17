@@ -1,3 +1,5 @@
+package org.example;
+
 class Comprador {
     private String sonido;
     private int vuelto;

@@ -1,3 +1,5 @@
+package org.example;
+
 class Expendedor {
     private Deposito coca;
     private Deposito sprite;
