@@ -1,20 +1,22 @@
 package org.example;
 
 public enum InfoProducto {
-    COCA("cocacola", 1),FANTA("fanta", 2),
-    SPRITE("sprite", 3),SNICKERS("snickers", 4),
-    SUPER8("super8", 5);
+    COCA(1000, 1),
+    FANTA(900, 2),
+    SPRITE(800, 3),
+    SNICKERS(400, 4),
+    SUPER8(200, 5);
 
-    private String sabor;
+    private int precio;
     private int cualProducto;
 
-    private InfoProducto(String sabor, int cualProducto) {
-        this.sabor = sabor;
+    private InfoProducto(int precio, int cualProducto) {
+        this.precio = precio;
         this.cualProducto = cualProducto;
     }
 
-    public String getSabor() {
-        return sabor;
+    public int getPrecio() {
+        return precio;
     }
 
     public int getCualProducto() {
