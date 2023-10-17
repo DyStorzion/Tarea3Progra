@@ -1,19 +1,19 @@
 package org.example;
 
-class CocaCola extends Bebida {
-    public CocaCola(int serie) {
+public class Super8 extends Dulces{
+    public Super8(int serie) {
         super(serie);
     }
 
-    public String consumir() {
-        return "cocacola";
+    public String consumir(){
+        return "snickers";
     }
 
     @Override
     public String toString() {
         String answer = new String();
         answer += super.toString();
-        answer += "Tipo de Bebida: Sprite";
+        answer += "Tipo de Dulce: Super 8";
         return answer;
     }
 }

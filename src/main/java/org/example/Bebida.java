@@ -1,15 +1,13 @@
 package org.example;
 
-abstract class Bebida {
-    private int serie;
+abstract class Bebida extends Producto{
 
     public Bebida(int serie) {
-        this.serie = serie;
+        super(serie);
     }
 
-    public abstract String beber();
-
-    public int getSerie() {
-        return this.serie;
+    @Override
+    public String toString() {
+        return "Producto: Bebida\n";
     }
 }
