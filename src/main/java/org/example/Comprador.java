@@ -4,18 +4,18 @@ class Comprador {
     private String sonido;
     private int vuelto;
 
-    public Comprador(Moneda m, int cualBebida, Expendedor exp) {
-        Producto p = exp.comprarProducto(m, cualBebida);
+    public Comprador(Moneda moneda, InfoProducto opcionProducto, Expendedor expendedor) {
+        Producto p = expendedor.comprarProducto(moneda, opcionProducto);
         if (p == null) {
             sonido = null;
         } else {
             sonido = p.consumir();
         }
         Moneda aux;
-        aux = exp.getVuelto();
+        aux = expendedor.getVuelto();
         while (aux != null) {
             vuelto += aux.getValor();
-            aux = exp.getVuelto();
+            aux = expendedor.getVuelto();
         }
     }
 
