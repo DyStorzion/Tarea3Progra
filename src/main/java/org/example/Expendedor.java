@@ -27,42 +27,40 @@ class Expendedor {
 
     public Producto comprarProducto(Moneda moneda, InfoProducto opcionProducto)
             throws PagoIncorrectoException,NoHayProductoException,PagoInsuficienteException {
-        if(opcionProducto != InfoProducto.COCA & opcionProducto != InfoProducto.SPRITE & opcionProducto != InfoProducto.FANTA
-        & opcionProducto != InfoProducto.SNICKERS & opcionProducto != InfoProducto.SUPER8){
-            monedas.addElemento(moneda);
-            throw new NoHayProductoException();
-        }
         if (moneda == null) {
             throw new PagoIncorrectoException();
         }
         else {
             if (moneda.getValor() < opcionProducto.getPrecio()) {
                 monedas.addElemento(moneda);
-                throw new NoHayProductoException();
+                throw new PagoInsuficienteException();
             } else {
                 int nb = (moneda.getValor() - opcionProducto.getPrecio()) / 100;
                 Producto aux = null;
                 switch (opcionProducto) {
                     case COCA:
                         aux = coca.getElemento();
+                        break;
                     case SPRITE:
                         aux = sprite.getElemento();
+                        break;
                     case FANTA:
                         aux = fanta.getElemento();
+                        break;
                     case SUPER8:
                         aux = super8.getElemento();
+                        break;
                     case SNICKERS:
                         aux = snickers.getElemento();
+                        break;
+                    default:
+                        monedas.addElemento(moneda);
+                        throw new NoHayProductoException();
                 }
-                if (aux == null) {
-                    throw new NoHayProductoException();
+                for (int i = 0; i < nb; i++) {
+                    monedas.addElemento(new Moneda100());
                 }
-                else {
-                    for (int i = 0; i < nb; i++) {
-                        monedas.addElemento(new Moneda100());
-                    }
-                    return aux;
-                }
+                return aux;
             }
         }
     }

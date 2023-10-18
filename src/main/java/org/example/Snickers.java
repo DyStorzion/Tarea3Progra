@@ -7,6 +7,11 @@ public class Snickers extends Dulces{
 
     @Override
     public String consumir() {
+        return "snickers";
+    }
+
+    @Override
+    public String toString() {
         String answer = new String();
         answer += super.toString();
         answer += "Tipo de Dulce: Snickers";
