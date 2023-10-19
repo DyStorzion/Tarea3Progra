@@ -47,6 +47,6 @@ abstract class Moneda implements Comparable<Moneda> {
      */
     @Override
     public String toString() {
-        return "Esta moneda vale " + this.getValor() + " pesos y tiene como numero de referencia: " + this.getSerie();
+        return "Esta moneda vale " + this.getValor() + " pesos y tiene como numero de serie: " + super.toString();
     }
 }
