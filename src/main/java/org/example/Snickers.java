@@ -1,15 +1,32 @@
 package org.example;
 
+/**
+ *Tipo de dulce
+ * @author Carlos Álvarez
+ */
 public class Snickers extends Dulces{
+
+    /**
+     * Se pasa el numero de serie de snickers.
+     * @param serie numero de serie.
+     */
     public Snickers(int serie) {
         super(serie);
     }
 
+    /**
+     * Implementacion de metodo consumir que entrega snickers.
+     * @return devuelve string snickers.
+     */
     @Override
     public String consumir() {
         return "snickers";
     }
 
+    /**
+     * toString que entrega informaciones especificas de los snickers
+     * @return entrega informacion de snickers.
+     */
     @Override
     public String toString() {
         String answer = new String();
