@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Clase hecha para probar que los depositos funcionan correctamente.
+ * @author Carlos Álvarez
+ */
 class DepositoTest {
     Deposito<Moneda> depositoMonedas;
     Deposito<CocaCola> depositoCocaCola;
@@ -16,6 +20,9 @@ class DepositoTest {
     Deposito<Super8> depositoSuper8;
     Deposito<Snickers> depositoSnickers;
 
+    /**
+     * Se instancian todos los tipos de depositos que pueden haber dentro del proyecto.
+     */
     @BeforeEach
     void setUp() {
         depositoMonedas = new Deposito<Moneda>();
@@ -26,12 +33,18 @@ class DepositoTest {
         depositoSnickers = new Deposito<Snickers>();
     }
 
+    /**
+     * Se verifica que entregue null si no hay alementos en el deposito.
+     */
     @Test
     @DisplayName("Caso en que no se pueda sacar más bebidas")
     void getElementoPeroDepositoVacio(){
         assertNull(depositoFanta.getElemento());
     }
 
+    /**
+     * Se verifica que cuando se recuperan las bebidas de los depositos se hace como una estructura fifo.
+     */
     @Test
     @DisplayName("Se añade elementos en el deposito como una estructura FIFO")
     void verifcarComportamientoFIFO(){
