@@ -27,42 +27,43 @@ class Expendedor {
 
     public Producto comprarProducto(Moneda moneda, InfoProducto opcionProducto)
             throws PagoIncorrectoException,NoHayProductoException,PagoInsuficienteException {
-        if (moneda == null) {
+
+        if (moneda == null)
             throw new PagoIncorrectoException();
+
+        if (moneda.getValor() < opcionProducto.getPrecio()) {
+            monedas.addElemento(moneda);
+            throw new PagoInsuficienteException();
         }
-        else {
-            if (moneda.getValor() < opcionProducto.getPrecio()) {
+
+        int cantidadMonedas100 = (moneda.getValor() - opcionProducto.getPrecio()) / 100;
+        Producto aux = null;
+        switch (opcionProducto) {
+            case COCA:
+                aux = coca.getElemento();
+                break;
+            case SPRITE:
+                aux = sprite.getElemento();
+                break;
+            case FANTA:
+                aux = fanta.getElemento();
+                break;
+            case SUPER8:
+                aux = super8.getElemento();
+                break;
+            case SNICKERS:
+                aux = snickers.getElemento();
+                break;
+            default:
                 monedas.addElemento(moneda);
-                throw new PagoInsuficienteException();
-            } else {
-                int nb = (moneda.getValor() - opcionProducto.getPrecio()) / 100;
-                Producto aux = null;
-                switch (opcionProducto) {
-                    case COCA:
-                        aux = coca.getElemento();
-                        break;
-                    case SPRITE:
-                        aux = sprite.getElemento();
-                        break;
-                    case FANTA:
-                        aux = fanta.getElemento();
-                        break;
-                    case SUPER8:
-                        aux = super8.getElemento();
-                        break;
-                    case SNICKERS:
-                        aux = snickers.getElemento();
-                        break;
-                    default:
-                        monedas.addElemento(moneda);
-                        throw new NoHayProductoException();
-                }
-                for (int i = 0; i < nb; i++) {
-                    monedas.addElemento(new Moneda100());
-                }
-                return aux;
-            }
+                throw new NoHayProductoException();
         }
+        for (int i = 0; i < cantidadMonedas100; i++)
+            monedas.addElemento(new Moneda100());
+
+        if (aux == null)
+            throw new NoHayProductoException();
+        return aux;
     }
     public Moneda getVuelto() {
         return monedas.getElemento();
