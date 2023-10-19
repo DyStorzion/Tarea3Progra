@@ -1,12 +1,19 @@
 package org.example;
 
-
+/**
+ * Clase main para demostrar el correcto funcionamiento del programa
+ * desde el comprador 1 hasta el 8 se usa solamente el primer expendedor probando comprar todos los productos
+ * y devolviendo el respectivo vuelto, los ultimos 2 compradores (Comprador 9 y 10) usan el segundo expendedor para
+ * demostrar que un expendedor no tiene relacion con el otro
+ */
 public class Main {
     public static void main(String[] args) {
+        //Creacion de una moneda y dos expendodres
         Moneda moneda = new Moneda1000();
         Expendedor expendedor1 = new Expendedor(1);
         Expendedor expendedor2 = new Expendedor(1);
 
+        //Comprador 1
         System.out.println("comprador1: ");
         Comprador comprador1;
         try {
@@ -21,6 +28,7 @@ public class Main {
             System.out.println("Moneda invalida");
         }
 
+        //Comprador 2
         System.out.println("\ncomprador2: ");
         Comprador comprador2;
         moneda = new Moneda1000();
@@ -36,6 +44,7 @@ public class Main {
             System.out.println("Moneda invalida");
         }
 
+        //Comprador 3
         System.out.println("\ncomprador3: ");
         Comprador comprador3;
         try {
@@ -50,6 +59,7 @@ public class Main {
             System.out.println("Moneda invalida");
         }
 
+        //Comprador 4
         System.out.println("\ncomprador4: ");
         Comprador comprador4;
         try {
@@ -64,6 +74,7 @@ public class Main {
             System.out.println("Moneda invalida");
         }
 
+        //Comprador 5
         System.out.println("\ncomprador5: ");
         Comprador comprador5;
         try {
@@ -78,6 +89,7 @@ public class Main {
             System.out.println("Moneda invalida");
         }
 
+        //Comprador 6
         System.out.println("\ncomprador6: ");
         Comprador comprador6;
         moneda = new Moneda1000();
@@ -93,6 +105,7 @@ public class Main {
             System.out.println("Moneda invalida");
         }
 
+        //Comprador 7
         System.out.println("\ncomprador7: ");
         Comprador comprador7;
         moneda = new Moneda100();
@@ -108,6 +121,7 @@ public class Main {
             System.out.println("Moneda invalida");
         }
 
+        //Comprador 8
         System.out.println("\ncomprador8:");
         Comprador comprador8;
         moneda = null;
@@ -123,6 +137,7 @@ public class Main {
             System.out.println("Moneda invalida");
         }
 
+        //Comprador 9
         System.out.println("\ncomprador9: ");
         Comprador comprador9;
         moneda = new Moneda1000();
@@ -138,6 +153,7 @@ public class Main {
             System.out.println("Moneda invalida");
         }
 
+        //Comprador 10
         System.out.println("\ncomprador10: ");
         Comprador comprador10;
         moneda = new Moneda1000();
