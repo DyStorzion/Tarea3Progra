@@ -7,6 +7,6 @@ public abstract class Dulces extends Producto{
 
     @Override
     public String toString() {
-        return "Producto: Dulces";
+        return "Producto: Dulces\n";
     }
 }
