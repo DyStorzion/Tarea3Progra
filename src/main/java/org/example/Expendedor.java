@@ -36,6 +36,8 @@ class Expendedor {
     /**
      *Se encarga de realizar la compra del producto
      * Si se realiza la compra se usa un for para ingresar las monedas de 100 que sobraron al deposito de monedas
+     * OJO: Segun las instrucciones de la tarea expendedor acepta monedas de 100 a 1000 pesos por lo tanto no de 1500
+     * Ante este caso se tira PagoIncorrectoException.
      * @param moneda moneda ingresada para comprar
      * @param opcionProducto opcion elegida del prodcuto por el comprador
      * @return producto comprado
@@ -46,7 +48,7 @@ class Expendedor {
     public Producto comprarProducto(Moneda moneda, InfoProducto opcionProducto)
             throws PagoIncorrectoException,NoHayProductoException,PagoInsuficienteException {
 
-        if (moneda == null)
+        if (moneda == null || moneda.getValor() == 1500)
             throw new PagoIncorrectoException();
 
         if (moneda.getValor() < opcionProducto.getPrecio()) {
