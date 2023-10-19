@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Clase para testear la clase Comprador
- * @author Benjamin Espinoza
+ * @author Benjamin Espinoza, Carlos Álvarez
  */
 class CompradorTest {
 
@@ -41,6 +41,13 @@ class CompradorTest {
         assertEquals(0, comprador.cuantoVuelto());
     }
 
+    @Test
+    void compradorVueltoRetorna600()
+            throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+        comprador = new Comprador(moneda, InfoProducto.SNICKERS, expendedor);
+        assertEquals(600, comprador.cuantoVuelto());
+    }
+
     /**
      *Verifica que que consumiste con CocaCola retorna cocacola
      * @throws NoHayProductoException
@@ -55,15 +62,30 @@ class CompradorTest {
     }
 
     /**
-     * Verifica que se lanza la excepcion PagoIncorrectoException
+     * Verifica que se lanza la excepcion PagoIncorrectoException ante moneda igual a null
      * @throws NoHayProductoException
      * @throws PagoInsuficienteException
      * @throws PagoIncorrectoException
      */
     @Test
-    void compradorThrowPagoIncorrectoException()
+    void compradorThrowPagoIncorrectoExceptionConMonedaNull()
             throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         moneda = null;
+        assertThrows(PagoIncorrectoException.class, () ->{
+            comprador = new Comprador(moneda,InfoProducto.COCA,expendedor);
+        });
+    }
+
+    /**
+     * Verifica que se lanza la excepcion PagoIncorrectoException ante moneda igual a 1500
+     * @throws NoHayProductoException
+     * @throws PagoInsuficienteException
+     * @throws PagoIncorrectoException
+     */
+    @Test
+    void compradorThrowPagoIncorrectoExceptionConMoneda1500()
+            throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+        moneda = new Moneda1500();
         assertThrows(PagoIncorrectoException.class, () ->{
             comprador = new Comprador(moneda,InfoProducto.COCA,expendedor);
         });
