@@ -1,5 +1,10 @@
 package org.example;
 
+/**
+ * Clase para crear un expendedor con los distintos depositos y metodos para comprar y conseguir el vuelto
+ *
+ * @author Benjamin Espinoza
+ */
 class Expendedor {
     private Deposito<CocaCola> coca;
     private Deposito<Sprite> sprite;
@@ -8,7 +13,10 @@ class Expendedor {
     private Deposito<Snickers> snickers;
     private Deposito<Moneda> monedas;
 
-
+    /**
+     * Constructor que inicializa los depositos con la cantidad de bebidas indicada
+     * @param n numero de bebidas que se ingresan en los depositos
+     */
     public Expendedor(int n) {
         coca = new Deposito<CocaCola>();
         sprite = new Deposito<Sprite>();
@@ -25,6 +33,16 @@ class Expendedor {
         }
     }
 
+    /**
+     *Se encarga de realizar la compra del producto
+     * Si se realiza la compra se usa un for para ingresar las monedas de 100 que sobraron al deposito de monedas
+     * @param moneda moneda ingresada para comprar
+     * @param opcionProducto opcion elegida del prodcuto por el comprador
+     * @return producto comprado
+     * @throws PagoIncorrectoException si la moneda no existe
+     * @throws NoHayProductoException si no queda del producto elegido o ingreso una opcion no valida
+     * @throws PagoInsuficienteException si la moneda tiene un valor menor al precio del producto
+     */
     public Producto comprarProducto(Moneda moneda, InfoProducto opcionProducto)
             throws PagoIncorrectoException,NoHayProductoException,PagoInsuficienteException {
 
@@ -65,6 +83,11 @@ class Expendedor {
             throw new NoHayProductoException();
         return aux;
     }
+
+    /**
+     *
+     * @return primera moneda en el deposito monedas
+     */
     public Moneda getVuelto() {
         return monedas.getElemento();
     }
