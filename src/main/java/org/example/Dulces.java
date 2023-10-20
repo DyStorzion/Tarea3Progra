@@ -2,7 +2,7 @@ package org.example;
 
 /**
  * Se crea como tipo de producto los Dulces.
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 public abstract class Dulces extends Producto{
 

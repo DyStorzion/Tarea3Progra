@@ -2,7 +2,7 @@ package org.example;
 
 /**
  * Clase para poder crear fantas que hereda de la clase Bebida.
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 public class Fanta extends Bebida{
     public Fanta(int serie) {

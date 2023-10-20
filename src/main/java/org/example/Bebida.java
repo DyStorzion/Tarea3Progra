@@ -1,8 +1,8 @@
 package org.example;
 
 /**
- * Clase Abstract con la que se espera que se implementen los distintos tipos de bebida.
- * @author Carlos Álvarez
+ *Clase Abstract con la que se espera que se implementen los distintos tipos de bebida.
+ * @author Carlos Alvarez
  */
 abstract class Bebida extends Producto{
     /**

@@ -2,7 +2,7 @@ package org.example;
 
 /**
  * Clase para poder crear cocacolas que hereda de la clase Bebida.
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 class CocaCola extends Bebida {
     public CocaCola(int serie) {

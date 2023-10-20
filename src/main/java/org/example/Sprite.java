@@ -2,7 +2,7 @@ package org.example;
 
 /**
  * Clase para poder crear sprites que hereda de la clase Bebida.
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 class Sprite extends Bebida {
     public Sprite(int serie) {

@@ -2,7 +2,7 @@ package org.example;
 
 /**
  *Tipo de dulce
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 public class Snickers extends Dulces{
 

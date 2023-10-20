@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Clase para testear la clase CocaCola
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 class CocaColaTest {
     private CocaCola cocacola;

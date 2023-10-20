@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Objeto creado para almacenar distintos tipos de productos independiente de que sean.
  * Un deposito tiene solo un tipo de objeto.
  * @param <T> El objeto a almacenar.
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 class Deposito <T>{
     private ArrayList<T> almacen;

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Clase para testear la clase Comprador
- * @author Benjamin Espinoza, Carlos Álvarez
+ * @author Benjamin Espinoza, Carlos Alvarez
  */
 class CompradorTest {
 

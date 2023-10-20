@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Clase para testear la clase Snickers
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 class SnickersTest {
 

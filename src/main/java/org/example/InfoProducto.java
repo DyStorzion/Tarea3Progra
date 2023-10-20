@@ -2,7 +2,7 @@ package org.example;
 
 /**
  * Enumeracion para representar las opciones de las maquinas como sus precios.
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 public enum InfoProducto {
     /**

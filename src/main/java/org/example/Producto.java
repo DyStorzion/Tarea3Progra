@@ -2,7 +2,7 @@ package org.example;
 
 /**
  * Clase abstract para implementar cada uno de los productos que se va a vender en la maquina expendedora.
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 public abstract class Producto {
     private int serie;

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Clase para testear la clase Fanta
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 class FantaTest {
     private Fanta fanta;

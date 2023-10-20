@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Clase hecha para probar que los depositos funcionan correctamente.
- * @author Carlos Álvarez
+ * @author Carlos Alvarez
  */
 class DepositoTest {
     Deposito<Moneda> depositoMonedas;
