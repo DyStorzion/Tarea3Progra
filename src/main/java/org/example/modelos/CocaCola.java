@@ -1,10 +1,10 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Clase para poder crear cocacolas que hereda de la clase Bebida.
  * @author Carlos Alvarez
  */
-class CocaCola extends Bebida {
+public class CocaCola extends Bebida {
     public CocaCola(int serie) {
         super(serie);
     }

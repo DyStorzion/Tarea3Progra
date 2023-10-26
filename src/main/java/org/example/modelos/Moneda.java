@@ -1,10 +1,10 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Clase abstract para crear las distintas monedas con los respectivos precios que representan.
  * @author Benjamin Espinoza
  */
-abstract class Moneda implements Comparable<Moneda> {
+public abstract class Moneda implements Comparable<Moneda> {
     public Moneda() {
     }
 

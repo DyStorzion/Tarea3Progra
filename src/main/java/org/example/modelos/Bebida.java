@@ -1,10 +1,10 @@
-package org.example;
+package org.example.modelos;
 
 /**
  *Clase Abstract con la que se espera que se implementen los distintos tipos de bebida.
  * @author Carlos Alvarez
  */
-abstract class Bebida extends Producto{
+public abstract class Bebida extends Producto{
     /**
      * Se pasa el numero de serie dado por el expendedor de manera arbitraria.
      * @param serie numero de serie de cada bebida.

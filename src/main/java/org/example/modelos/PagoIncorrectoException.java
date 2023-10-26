@@ -1,4 +1,4 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Esta excepcion se lanza al ingresar una moneda null al expendedor

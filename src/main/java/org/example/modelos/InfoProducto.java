@@ -1,4 +1,4 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Enumeracion para representar las opciones de las maquinas como sus precios.

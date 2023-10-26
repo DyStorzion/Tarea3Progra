@@ -1,4 +1,4 @@
-package org.example;
+package org.example.modelos;
 
 /**
  *Tipo de dulce

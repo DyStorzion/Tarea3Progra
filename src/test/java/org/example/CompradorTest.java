@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.modelos.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -37,7 +38,7 @@ class CompradorTest {
     @Test
     void compradorVueltoRetornaCero()
             throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        comprador = new Comprador(moneda,InfoProducto.COCA,expendedor);
+        comprador = new Comprador(moneda, InfoProducto.COCA,expendedor);
         assertEquals(0, comprador.cuantoVuelto());
     }
 

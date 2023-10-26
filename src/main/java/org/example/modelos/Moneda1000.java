@@ -1,10 +1,10 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Implementa las monedas de 1000
  * @author Benjamin Espinoza
  */
-class Moneda1000 extends Moneda {
+public class Moneda1000 extends Moneda {
     public Moneda1000() {
         super();
     }

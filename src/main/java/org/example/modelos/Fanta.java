@@ -1,4 +1,4 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Clase para poder crear fantas que hereda de la clase Bebida.

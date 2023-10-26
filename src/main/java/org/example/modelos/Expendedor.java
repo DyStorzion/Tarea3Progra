@@ -1,11 +1,11 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Clase para crear un expendedor con los distintos depositos y metodos para comprar y conseguir el vuelto
  *
  * @author Benjamin Espinoza
  */
-class Expendedor {
+public class Expendedor {
     private Deposito<CocaCola> coca;
     private Deposito<Sprite> sprite;
     private Deposito<Fanta> fanta;

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.modelos;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @param <T> El objeto a almacenar.
  * @author Carlos Alvarez
  */
-class Deposito <T>{
+public class Deposito <T>{
     private ArrayList<T> almacen;
 
     /**

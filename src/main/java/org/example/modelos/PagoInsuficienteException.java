@@ -1,4 +1,4 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Esta excepcion se lanza cuando el precio de un producto es menor al valor de la moneda

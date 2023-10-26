@@ -1,4 +1,4 @@
-package org.example;
+package org.example.modelos;
 
 /**
  *Clase main para demostrar el correcto funcionamiento del programa

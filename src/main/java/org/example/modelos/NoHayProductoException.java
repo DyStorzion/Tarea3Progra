@@ -1,4 +1,4 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Esta excepcion se lanza si no hay producto o se elige una opcion incorrecta de producto

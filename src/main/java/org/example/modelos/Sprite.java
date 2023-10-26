@@ -1,10 +1,10 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Clase para poder crear sprites que hereda de la clase Bebida.
  * @author Carlos Alvarez
  */
-class Sprite extends Bebida {
+public class Sprite extends Bebida {
     public Sprite(int serie) {
         super(serie);
     }

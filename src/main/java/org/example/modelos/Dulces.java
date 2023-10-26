@@ -1,4 +1,4 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Se crea como tipo de producto los Dulces.

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Clase abstract para implementar cada uno de los productos que se va a vender en la maquina expendedora.

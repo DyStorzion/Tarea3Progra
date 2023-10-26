@@ -1,11 +1,11 @@
-package org.example;
+package org.example.modelos;
 
 /**
  * Clase para generar un comprador con vuelto y un sonido del producto que consumio
  *
  * @author Benjamin Espinoza
  */
-class Comprador {
+public class Comprador {
     private String sonido;
     private int vuelto;
 
