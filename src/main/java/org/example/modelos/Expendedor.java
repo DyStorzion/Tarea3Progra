@@ -78,11 +78,15 @@ class Expendedor {
                 monedas.addElemento(moneda);
                 throw new NoHayProductoException();
         }
+
+        if (aux == null) {
+            monedas.addElemento(moneda);
+            throw new NoHayProductoException();
+        }
+
         for (int i = 0; i < cantidadMonedas100; i++)
             monedas.addElemento(new Moneda100());
 
-        if (aux == null)
-            throw new NoHayProductoException();
         return aux;
     }
 
