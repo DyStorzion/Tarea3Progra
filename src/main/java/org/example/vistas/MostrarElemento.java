@@ -2,7 +2,7 @@ package org.example.vistas;
 
 import javax.swing.*;
 
-public class MostrarElemento extends JPanel {
+public abstract class MostrarElemento extends JPanel {
     private int x;
     private int y;
 
