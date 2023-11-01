@@ -12,6 +12,7 @@ public class Expendedor {
     private Deposito<Super8> super8;
     private Deposito<Snickers> snickers;
     private Deposito<Moneda> monedas;
+    private Producto productoComprado;
 
     /**
      * Constructor que inicializa los depositos con la cantidad de bebidas indicada
@@ -45,7 +46,7 @@ public class Expendedor {
      * @throws NoHayProductoException si no queda del producto elegido o ingreso una opcion no valida
      * @throws PagoInsuficienteException si la moneda tiene un valor menor al precio del producto
      */
-    public Producto comprarProducto(Moneda moneda, InfoProducto opcionProducto)
+    public void comprarProducto(Moneda moneda, InfoProducto opcionProducto)
             throws PagoIncorrectoException,NoHayProductoException,PagoInsuficienteException {
 
         if (moneda == null || moneda.getValor() == 1500)
@@ -87,7 +88,7 @@ public class Expendedor {
         for (int i = 0; i < cantidadMonedas100; i++)
             monedas.addElemento(new Moneda100());
 
-        return aux;
+        this.productoComprado = aux;
     }
 
     /**
@@ -96,5 +97,9 @@ public class Expendedor {
      */
     public Moneda getVuelto() {
         return monedas.getElemento();
+    }
+
+    public Producto getProducto() {
+        return productoComprado;
     }
 }

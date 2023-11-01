@@ -33,7 +33,8 @@ class ExpendedorTest {
     void deberiaRetornarCocaCola()
             throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         moneda = new Moneda1000();
-        producto = expendedor.comprarProducto(moneda, InfoProducto.COCA);
+        expendedor.comprarProducto(moneda, InfoProducto.COCA);
+        producto = expendedor.getProducto();
         assertInstanceOf(CocaCola.class, producto);
     }
 
@@ -47,7 +48,8 @@ class ExpendedorTest {
     void deberiaRetornarSprite()
             throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         moneda = new Moneda1000();
-        producto = expendedor.comprarProducto(moneda, InfoProducto.SPRITE);
+        expendedor.comprarProducto(moneda, InfoProducto.SPRITE);
+        producto = expendedor.getProducto();
         assertInstanceOf(Sprite.class, producto);
     }
 
@@ -61,7 +63,8 @@ class ExpendedorTest {
     void deberiaRetornarFanta()
             throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         moneda = new Moneda1000();
-        producto = expendedor.comprarProducto(moneda, InfoProducto.FANTA);
+        expendedor.comprarProducto(moneda, InfoProducto.FANTA);
+        producto = expendedor.getProducto();
         assertInstanceOf(Fanta.class, producto);
     }
 
@@ -75,7 +78,8 @@ class ExpendedorTest {
     void deberiaRetornarSnickers()
             throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         moneda = new Moneda1000();
-        producto = expendedor.comprarProducto(moneda, InfoProducto.SNICKERS);
+        expendedor.comprarProducto(moneda, InfoProducto.SNICKERS);
+        producto = expendedor.getProducto();
         assertInstanceOf(Snickers.class, producto);
     }
 
@@ -89,7 +93,8 @@ class ExpendedorTest {
     void deberiaRetornarSuper8()
             throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         moneda = new Moneda1000();
-        producto = expendedor.comprarProducto(moneda, InfoProducto.SUPER8);
+        expendedor.comprarProducto(moneda, InfoProducto.SUPER8);
+        producto = expendedor.getProducto();
         assertInstanceOf(Super8.class, producto);
     }
 
@@ -103,10 +108,12 @@ class ExpendedorTest {
     void expendedorThrowNoHayProductoException()
             throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         moneda = new Moneda1000();
-        producto = expendedor.comprarProducto(moneda,InfoProducto.COCA);
+        expendedor.comprarProducto(moneda,InfoProducto.COCA);
+        producto = expendedor.getProducto();;
         moneda = new Moneda1000();
         assertThrows(NoHayProductoException.class, () ->{
-            producto = expendedor.comprarProducto(moneda,InfoProducto.COCA);
+            expendedor.comprarProducto(moneda,InfoProducto.COCA);
+            producto = expendedor.getProducto();
         });
     }
 
@@ -121,7 +128,8 @@ class ExpendedorTest {
             throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException{
         moneda = new Moneda500();
         assertThrows(PagoInsuficienteException.class, () ->{
-            producto = expendedor.comprarProducto(moneda,InfoProducto.COCA);
+            expendedor.comprarProducto(moneda,InfoProducto.COCA);
+            producto = expendedor.getProducto();
         });
     }
 
@@ -136,7 +144,8 @@ class ExpendedorTest {
             throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException{
         moneda = null;
         assertThrows(PagoIncorrectoException.class, () ->{
-            producto = expendedor.comprarProducto(moneda,InfoProducto.COCA);
+            expendedor.comprarProducto(moneda,InfoProducto.COCA);
+            producto = expendedor.getProducto();
         });
     }
 }
