@@ -6,13 +6,13 @@ package org.example.modelos;
  * @author Benjamin Espinoza
  */
 public class Expendedor {
-    private Deposito<CocaCola> coca;
-    private Deposito<Sprite> sprite;
-    private Deposito<Fanta> fanta;
-    private Deposito<Super8> super8;
-    private Deposito<Snickers> snickers;
-    private Deposito<Moneda> monedas;
-    private Deposito<Moneda> monedasIngresadas;
+    private Deposito<CocaCola> DepositoCoca;
+    private Deposito<Sprite> DepositoSprite;
+    private Deposito<Fanta> DepositoFanta;
+    private Deposito<Super8> DepositoSuper8;
+    private Deposito<Snickers> DepositoSnickers;
+    private Deposito<Moneda> DepositoMonedas;
+    private Deposito<Moneda> DepositoMonedasIngresadas;
     private Producto productoComprado;
 
     /**
@@ -20,19 +20,19 @@ public class Expendedor {
      * @param n numero de bebidas que se ingresan en los depositos
      */
     public Expendedor(int n) {
-        coca = new Deposito<CocaCola>();
-        sprite = new Deposito<Sprite>();
-        fanta = new Deposito<Fanta>();
-        super8 = new Deposito<Super8>();
-        snickers = new Deposito<Snickers>();
-        monedas = new Deposito<Moneda>();
-        monedasIngresadas = new Deposito<Moneda>();
+        DepositoCoca = new Deposito<CocaCola>();
+        DepositoSprite = new Deposito<Sprite>();
+        DepositoFanta = new Deposito<Fanta>();
+        DepositoSuper8 = new Deposito<Super8>();
+        DepositoSnickers = new Deposito<Snickers>();
+        DepositoMonedas = new Deposito<Moneda>();
+        DepositoMonedasIngresadas = new Deposito<Moneda>();
         for (int i = 0; i < n; i++) {
-            coca.addElemento(new CocaCola(100 + i));
-            sprite.addElemento(new Sprite(200 + i));
-            fanta.addElemento(new Fanta(300 + i));
-            super8.addElemento(new Super8(400 + i));
-            snickers.addElemento(new Snickers(500 + i));
+            DepositoCoca.addElemento(new CocaCola(100 + i));
+            DepositoSprite.addElemento(new Sprite(200 + i));
+            DepositoFanta.addElemento(new Fanta(300 + i));
+            DepositoSuper8.addElemento(new Super8(400 + i));
+            DepositoSnickers.addElemento(new Snickers(500 + i));
         }
     }
 
@@ -55,41 +55,42 @@ public class Expendedor {
             throw new PagoIncorrectoException();
 
         if (moneda.getValor() < opcionProducto.getPrecio()) {
-            monedas.addElemento(moneda);
+            DepositoMonedas.addElemento(moneda);
             throw new PagoInsuficienteException();
         }
-        monedasIngresadas.addElemento(moneda);
+
+        DepositoMonedasIngresadas.addElemento(moneda);
 
         int cantidadMonedas100 = (moneda.getValor() - opcionProducto.getPrecio()) / 100;
         Producto aux = null;
         switch (opcionProducto) {
             case COCA:
-                aux = coca.getElemento();
+                aux = DepositoCoca.getElemento();
                 break;
             case SPRITE:
-                aux = sprite.getElemento();
+                aux = DepositoSprite.getElemento();
                 break;
             case FANTA:
-                aux = fanta.getElemento();
+                aux = DepositoFanta.getElemento();
                 break;
             case SUPER8:
-                aux = super8.getElemento();
+                aux = DepositoSuper8.getElemento();
                 break;
             case SNICKERS:
-                aux = snickers.getElemento();
+                aux = DepositoSnickers.getElemento();
                 break;
             default:
-                monedas.addElemento(moneda);
+                DepositoMonedas.addElemento(moneda);
                 throw new NoHayProductoException();
         }
 
         if (aux == null) {
-            monedas.addElemento(moneda);
+            DepositoMonedas.addElemento(moneda);
             throw new NoHayProductoException();
         }
 
         for (int i = 0; i < cantidadMonedas100; i++)
-            monedas.addElemento(new Moneda100());
+            DepositoMonedas.addElemento(new Moneda100());
 
         this.productoComprado = aux;
     }
@@ -99,10 +100,38 @@ public class Expendedor {
      * @return primera moneda en el deposito monedas
      */
     public Moneda getVuelto() {
-        return monedas.getElemento();
+        return DepositoMonedas.getElemento();
     }
 
     public Producto getProducto() {
         return productoComprado;
+    }
+
+    public Deposito<CocaCola> getDepositoCoca() {
+        return DepositoCoca;
+    }
+
+    public Deposito<Sprite> getDepositoSprite() {
+        return DepositoSprite;
+    }
+
+    public Deposito<Fanta> getDepositoFanta() {
+        return DepositoFanta;
+    }
+
+    public Deposito<Super8> getDepositoSuper8() {
+        return DepositoSuper8;
+    }
+
+    public Deposito<Snickers> getDepositoSnickers() {
+        return DepositoSnickers;
+    }
+
+    public Deposito<Moneda> getDepositoMonedas() {
+        return DepositoMonedas;
+    }
+
+    public Deposito<Moneda> getDepositoMonedasIngresadas() {
+        return DepositoMonedasIngresadas;
     }
 }
