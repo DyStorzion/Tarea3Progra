@@ -12,8 +12,8 @@ public abstract class Moneda implements Comparable<Moneda> {
      * Se obtiene el numero de serie de la moneda que seria la referencia al objeto
      * @return La referencia al objeto.
      */
-    public Moneda getSerie() {
-        return this;
+    public int getSerie() {
+        return this.hashCode();
     }
 
     /**
@@ -47,6 +47,6 @@ public abstract class Moneda implements Comparable<Moneda> {
      */
     @Override
     public String toString() {
-        return "Esta moneda vale " + this.getValor() + " pesos y tiene como numero de serie: " + super.toString();
+        return "Esta moneda vale " + this.getValor() + " pesos y tiene como numero de serie: " + this.getSerie();
     }
 }
