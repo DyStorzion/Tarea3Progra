@@ -16,7 +16,7 @@ public class PanelProducto extends JPanel {
     private int altoImagen;
 
     public PanelProducto(Producto producto) {
-        this.setBackground(Color.cyan);
+        this.setBackground(Color.WHITE);
         this.producto = producto;
         this.setLayout(null);
         anchoImagen = 80;
