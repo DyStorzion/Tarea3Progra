@@ -33,6 +33,18 @@ public class PanelProducto extends JPanel {
             case "cocacola":
                 g.drawImage(logoCocaCola, 0, 0, this);
                 break;
+            case "sprite":
+                g.drawImage(logoSprite, 0, 0, this);
+                break;
+            case "fanta":
+                g.drawImage(logoFanta, 0, 0, this);
+                break;
+            case "snickers":
+                g.drawImage(logoSnickers, 0, 0, this);
+                break;
+            case "super 8":
+                g.drawImage(logoSuper8, 0, 0, this);
+                break;
         }
     }
 }
