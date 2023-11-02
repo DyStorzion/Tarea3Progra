@@ -12,8 +12,11 @@ public class PanelComprador extends JPanel {
     JButton crearCompradorBoton;
     JLabel descripcionCrearComprador;
     ArrayList<JRadioButton> botonesProductos;
+    ArrayList<JRadioButton> botonesMonedas;
     ButtonGroup grupoBotonesProductos;
+    ButtonGroup grupoBotonesMonedas;
     ArrayList<PanelProducto> panelesProductos;
+    ArrayList<PanelMoneda> panelesMonedas;
 
     private void enviarDatos(){
         crearCompradorBoton = new JButton();
@@ -29,6 +32,31 @@ public class PanelComprador extends JPanel {
         this.add(descripcionCrearComprador);
     }
 
+    private void crearOpcionesMonedas(){
+        ArrayList<Moneda> monedasModelo = new ArrayList<>(Arrays.asList(
+                new Moneda100(),
+                new Moneda500(),
+                new Moneda1000(),
+                new Moneda1500()
+        ));
+        botonesMonedas = new ArrayList<>();
+        panelesMonedas = new ArrayList<>();
+        grupoBotonesMonedas = new ButtonGroup();
+
+        for (int i = 0; i < monedasModelo.size(); i++){
+            JRadioButton boton = new JRadioButton();
+            boton.setBounds(740, 100 * i, 20, 20);
+            botonesMonedas.add(boton);
+            grupoBotonesMonedas.add(boton);
+            this.add(boton);
+
+            PanelMoneda panel = new PanelMoneda(monedasModelo.get(i));
+            panel.setBounds(650, 100 * i, 80, 80);
+            panelesMonedas.add(panel);
+            this.add(panel);
+
+        }
+    }
     private void crearOpcionesProductos(){
         ArrayList<Producto> productosModelo = new ArrayList<>(Arrays.asList(
                 new CocaCola(1),
@@ -61,6 +89,7 @@ public class PanelComprador extends JPanel {
 
         enviarDatos();
         crearOpcionesProductos();
+        crearOpcionesMonedas();
 
 
     }
