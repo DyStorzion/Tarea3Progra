@@ -28,19 +28,15 @@ public class PanelDepositoMoneda extends JPanel {
         for (int i = 0; i < elementosActualizar; i ++)
             monedas.add(deposito.getElemento());
 
-        for (Moneda moneda : monedas){
-            PanelMoneda panelMoneda = new PanelMoneda(moneda);
-            this.add(panelMoneda);
-            panelesMonedas.add(panelMoneda);
+        for (Moneda moneda : monedas) {
+            panelesMonedas.add(new PanelMoneda(moneda));
+            this.add(panelesMonedas.get(panelesMonedas.size() - 1));
             deposito.addElemento(moneda);
         }
     }
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        for  (int i = 0; i < deposito.size(); i++){
-            panelesMonedas.get(i).paint(g);
-        }
     }
 }
 
