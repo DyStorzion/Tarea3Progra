@@ -42,6 +42,7 @@ public class PanelMoneda extends JPanel {
             }
             g.fillOval(x - radio, y - radio, 2 * radio, 2 * radio);
             g.setColor(Color.BLACK);
+            g.drawRect(0, 0, getWidth(), getHeight());
             g.setFont(new Font("Arial", Font.PLAIN, 24));
             g.drawString(String.valueOf(this.moneda.getSerie()), x-50, y);
         }

@@ -14,9 +14,11 @@ public class PanelProducto extends JPanel {
     private Image logoSuper8;
     private int anchoImagen;
     private int altoImagen;
+
     public PanelProducto(Producto producto) {
         this.setBackground(Color.cyan);
         this.producto = producto;
+        this.setLayout(null);
         anchoImagen = 80;
         altoImagen = 80;
         logoCocaCola = new ImageIcon("assets/ImagenCocaCola.png").getImage().getScaledInstance(anchoImagen,altoImagen,Image.SCALE_SMOOTH);
@@ -29,6 +31,8 @@ public class PanelProducto extends JPanel {
     @Override
     public void paint(Graphics g){
         super.paint(g);
+        g.setColor(Color.BLACK);
+        g.drawRect(0, 0, getWidth(), getHeight());
         switch (producto.consumir()){
             case "cocacola":
                 g.drawImage(logoCocaCola, 0, 0, this);
