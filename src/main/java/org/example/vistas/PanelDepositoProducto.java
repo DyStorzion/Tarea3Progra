@@ -24,6 +24,26 @@ public class PanelDepositoProducto <T> extends JPanel {
         }
     }
 
+    public void actualizarUltimosElementos(int elementosActualizar){
+        ArrayList<T> productos = new ArrayList<>();
+        for (int i = 0; i < elementosActualizar; i ++)
+            productos.add(deposito.getElemento());
+
+        for (T producto : productos){
+            PanelProducto panelProducto = new PanelProducto((Producto) producto);
+            this.add(panelProducto);
+            panelesProductos.add(panelProducto);
+            deposito.addElemento(producto);
+        }
+    }
+
+    public void quitarElementos(){
+        if (deposito.size() >= panelesProductos.size())
+            return;
+
+        panelesProductos.remove(panelesProductos.size() - 1);
+    }
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);
