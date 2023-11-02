@@ -14,7 +14,7 @@ public class PanelDepositoMoneda extends JPanel {
     public PanelDepositoMoneda(Deposito<Moneda> deposito) {
         this.deposito = deposito;
         this.panelesMonedas = new ArrayList<>();
-        setLayout(new GridLayout(1, deposito.size()));
+        setLayout(new GridLayout(1, 100));
         for (int i = 0; i < deposito.size(); i++){
             Moneda moneda = deposito.getElemento();
             panelesMonedas.add(new PanelMoneda(moneda));
@@ -23,6 +23,12 @@ public class PanelDepositoMoneda extends JPanel {
         }
     }
 
+    public void actualizarUltimoElemento(){
+        Moneda moneda = deposito.getElemento();
+        PanelMoneda panelMoneda = new PanelMoneda(moneda);
+        this.add(panelMoneda);
+        panelesMonedas.add(panelMoneda);
+    }
     @Override
     public void paint(Graphics g) {
         super.paint(g);
