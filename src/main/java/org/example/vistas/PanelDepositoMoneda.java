@@ -8,13 +8,13 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class PanelDepositoMoneda extends JPanel {
-    Deposito<Moneda> deposito;
-    ArrayList<PanelMoneda> panelesMonedas;
+    private Deposito<Moneda> deposito;
+    private ArrayList<PanelMoneda> panelesMonedas;
 
     public PanelDepositoMoneda(Deposito<Moneda> deposito) {
         this.deposito = deposito;
+        this.panelesMonedas = new ArrayList<>();
         setLayout(new GridLayout(1, deposito.size()));
-        panelesMonedas = new ArrayList<>();
         for (int i = 0; i < deposito.size(); i++){
             Moneda moneda = deposito.getElemento();
             panelesMonedas.add(new PanelMoneda(moneda));
