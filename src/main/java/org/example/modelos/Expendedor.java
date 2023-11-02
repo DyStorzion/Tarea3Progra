@@ -12,6 +12,7 @@ public class Expendedor {
     private Deposito<Super8> super8;
     private Deposito<Snickers> snickers;
     private Deposito<Moneda> monedas;
+    private Deposito<Moneda> monedasIngresadas;
     private Producto productoComprado;
 
     /**
@@ -25,6 +26,7 @@ public class Expendedor {
         super8 = new Deposito<Super8>();
         snickers = new Deposito<Snickers>();
         monedas = new Deposito<Moneda>();
+        monedasIngresadas = new Deposito<Moneda>();
         for (int i = 0; i < n; i++) {
             coca.addElemento(new CocaCola(100 + i));
             sprite.addElemento(new Sprite(200 + i));
@@ -56,6 +58,7 @@ public class Expendedor {
             monedas.addElemento(moneda);
             throw new PagoInsuficienteException();
         }
+        monedasIngresadas.addElemento(moneda);
 
         int cantidadMonedas100 = (moneda.getValor() - opcionProducto.getPrecio()) / 100;
         Producto aux = null;
