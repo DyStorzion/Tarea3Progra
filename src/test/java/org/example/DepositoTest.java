@@ -44,10 +44,10 @@ class DepositoTest {
     }
 
     /**
-     * Se verifica que cuando se recuperan las bebidas de los depositos se hace como una estructura fifo.
+     * Se verifica que cuando se recuperan las bebidas de los depositos se hace como una estructura lifo.
      */
     @Test
-    @DisplayName("Se añade elementos en el deposito como una estructura FIFO")
+    @DisplayName("Se añade elementos en el deposito como una estructura LIFO")
     void verifcarComportamientoFIFO(){
         Moneda100 moneda1 = new Moneda100();
         Moneda1000 moneda2 = new Moneda1000();
@@ -62,8 +62,8 @@ class DepositoTest {
         orden_monedas.add(depositoMonedas.getElemento());
         orden_monedas.add(depositoMonedas.getElemento());
 
-        assertSame(moneda1, orden_monedas.get(0));
+        assertSame(moneda3, orden_monedas.get(0));
         assertSame(moneda2, orden_monedas.get(1));
-        assertSame(moneda3, orden_monedas.get(2));
+        assertSame(moneda1, orden_monedas.get(2));
     }
 }

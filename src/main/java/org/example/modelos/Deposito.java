@@ -28,7 +28,7 @@ public class Deposito <T>{
     }
 
     /**
-     * Se obtiene el elemento a sacar en un orden FIFO
+     * Se obtiene el elemento a sacar en un orden LIFO
      * Si no hay nada en el deposito retorna null
      * @return el elemento que corresponde a sacar.
      */
@@ -36,7 +36,7 @@ public class Deposito <T>{
         if (almacen.size() == 0)
             return null;
         else {
-            return almacen.remove(0);
+            return almacen.remove(almacen.size() - 1);
         }
     }
 
