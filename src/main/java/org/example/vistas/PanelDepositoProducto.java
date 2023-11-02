@@ -40,14 +40,14 @@ public class PanelDepositoProducto <T> extends JPanel {
     public void quitarElementos(){
         if (deposito.size() >= panelesProductos.size())
             return;
-
-        panelesProductos.remove(panelesProductos.size() - 1);
+        PanelProducto panelProducto = panelesProductos.remove(panelesProductos.size() - 1);
+        this.remove(panelProducto);
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        for  (int i = 0; i < deposito.size(); i++){
+        for  (int i = 0; i < panelesProductos.size(); i++){
             panelesProductos.get(i).paint(g);
         }
     }
