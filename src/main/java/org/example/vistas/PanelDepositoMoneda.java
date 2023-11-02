@@ -26,7 +26,9 @@ public class PanelDepositoMoneda extends JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-
+        for  (int i = 0; i < deposito.size(); i++){
+            panelesMonedas.get(i).paint(g);
+        }
     }
 }
 

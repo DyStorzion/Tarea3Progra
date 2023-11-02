@@ -8,17 +8,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class PanelDepositoProducto extends JPanel {
-    private Deposito<Producto> deposito;
+public class PanelDepositoProducto <T> extends JPanel {
+    private Deposito<T> deposito;
     private ArrayList<PanelProducto> panelesProductos;
 
-    public PanelDepositoProducto(Deposito<Producto> deposito) {
+    public PanelDepositoProducto(Deposito<T> deposito) {
         this.deposito = deposito;
         this.panelesProductos = new ArrayList<>();
         setLayout(new GridLayout(1, deposito.size()));
         for (int i = 0; i < deposito.size(); i++){
-            Producto producto = deposito.getElemento();
-            panelesProductos.add(new PanelProducto(producto));
+            T producto = deposito.getElemento();
+            panelesProductos.add(new PanelProducto((Producto) producto));
             this.add(panelesProductos.get(panelesProductos.size() - 1));
             deposito.addElemento(producto);
         }
@@ -27,7 +27,9 @@ public class PanelDepositoProducto extends JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-
+        for  (int i = 0; i < deposito.size(); i++){
+            panelesProductos.get(i).paint(g);
+        }
     }
 }
 
