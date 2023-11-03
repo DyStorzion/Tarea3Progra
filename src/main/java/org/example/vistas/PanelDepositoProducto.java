@@ -28,7 +28,7 @@ public class PanelDepositoProducto <T> extends JPanel {
         ArrayList<T> productos = new ArrayList<>();
         for (int i = 0; i < elementosActualizar; i ++)
             productos.add(deposito.getElemento());
-
+        this.removeAll();
         for (T producto : productos){
             PanelProducto panelProducto = new PanelProducto((Producto) producto);
             this.add(panelProducto);

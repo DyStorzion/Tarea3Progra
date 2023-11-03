@@ -27,7 +27,7 @@ public class PanelDepositoMoneda extends JPanel {
         ArrayList<Moneda> monedas = new ArrayList<>();
         for (int i = 0; i < elementosActualizar; i ++)
             monedas.add(deposito.getElemento());
-
+        this.removeAll();
         for (Moneda moneda : monedas) {
             panelesMonedas.add(new PanelMoneda(moneda));
             this.add(panelesMonedas.get(panelesMonedas.size() - 1));
