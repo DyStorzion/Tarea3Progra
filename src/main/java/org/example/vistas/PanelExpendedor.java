@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class PanelExpendedor extends JPanel {
@@ -18,6 +20,7 @@ public class PanelExpendedor extends JPanel {
     private PanelDepositoMoneda depositoMonedasIngresadas;
     private PanelDepositoMoneda depositoMonedasVuelto;
     private ArrayList<JPanel> panelesDepositoProducto;
+    private PanelProducto productoComprado;
     private int cantidadBebidas;
     public PanelExpendedor(Expendedor expendedor){
         this.expendedor = expendedor;
@@ -30,11 +33,7 @@ public class PanelExpendedor extends JPanel {
         this.depositoSuper8 = new PanelDepositoProducto<>(expendedor.getDepositoSuper8());
         this.depositoMonedasIngresadas = new PanelDepositoMoneda(expendedor.getDepositoMonedasIngresadas());
         this.depositoMonedasVuelto = new PanelDepositoMoneda(expendedor.getDepositoMonedas());
-
-        JButton botonRellenar = new JButton();
-        botonRellenar.setOpaque(false);
-        botonRellenar.setContentAreaFilled(false);
-        botonRellenar.setBorderPainted(false);
+        this.productoComprado = new PanelProducto(expendedor.getProducto());
 
         this.setBackground(Color.darkGray);
         this.setLayout(new GridLayout(2,1));
@@ -46,41 +45,17 @@ public class PanelExpendedor extends JPanel {
         panelesDepositoProducto.add(depositoSuper8);
 
         JPanel panelZonaSuperior = new JPanel();
-        panelZonaSuperior.setLayout(new OverlayLayout(panelZonaSuperior));
-
-        JPanel panelBoton = new JPanel(new GridLayout(1,1));
-        panelBoton.add(botonRellenar);
-        panelBoton.setOpaque(false);
-
-        JPanel panelDepositosProductos = new JPanel();
-        panelDepositosProductos.setLayout(new GridLayout(5,1));
-        panelDepositosProductos.setBackground(Color.darkGray);
+        panelZonaSuperior.setLayout(new GridLayout(5,1));
+        panelZonaSuperior.setBackground(Color.darkGray);
 
         for (JPanel panelDepositoProducto : panelesDepositoProducto) {
-            panelDepositosProductos.add(panelDepositoProducto);
+            panelZonaSuperior.add(panelDepositoProducto);
         }
 
-        panelZonaSuperior.add(panelBoton);
-        panelZonaSuperior.add(panelDepositosProductos);
-
-        JPanel panelZonaInferior = new JPanel(new GridLayout(2,1));
-        panelZonaInferior.setBackground(Color.lightGray);
-        JPanel panelMitadSuperior = new JPanel(new GridLayout(1,2));
-        JPanel panelMitadInferior = new JPanel(new GridLayout(1,1));
-
-        panelMitadSuperior.add(depositoMonedasIngresadas);
-        panelMitadSuperior.add(new JLabel("NO HAY NINGUN PRODUCTO COMPRADO"));
-        panelMitadInferior.add(depositoMonedasVuelto);
-
-        panelZonaInferior.add(panelMitadSuperior);
-        panelZonaInferior.add(panelMitadInferior);
-
-        this.add(panelZonaSuperior);
-        this.add(panelZonaInferior);
-        botonRellenar.addActionListener(new ActionListener() {
+        panelZonaSuperior.addMouseListener(new MouseAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("flag");
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
                 if(expendedor.getDepositoCoca().size() == 0){
                     for(int i = 0; i < cantidadBebidas; i++){
                         expendedor.getDepositoCoca().addElemento(new CocaCola(i + 100));
@@ -106,17 +81,56 @@ public class PanelExpendedor extends JPanel {
                         expendedor.getDepositoSuper8().addElemento(new Super8(i + 500));
                     }
                 }
+                for (JPanel panelDepositoProducto : panelesDepositoProducto) {
+                    panelZonaSuperior.add(panelDepositoProducto);
+                }
+                panelZonaSuperior.revalidate();
+                panelZonaSuperior.repaint();
                 actualizarDepositosProductos();
             }
         });
+
+        productoComprado.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+            }
+        });
+
+        JPanel panelZonaInferior = new JPanel(new GridLayout(2,1));
+        panelZonaInferior.setBackground(Color.lightGray);
+        JPanel panelMitadSuperior = new JPanel(new GridLayout(1,2));
+        JPanel panelMitadInferior = new JPanel(new GridLayout(1,1));
+
+        panelMitadSuperior.add(depositoMonedasIngresadas);
+        panelMitadSuperior.add(productoComprado);
+        panelMitadInferior.add(depositoMonedasVuelto);
+
+        panelZonaInferior.add(panelMitadSuperior);
+        panelZonaInferior.add(panelMitadInferior);
+
         try {
-            expendedor.comprarProducto(new Moneda1000(), InfoProducto.SPRITE);
-            expendedor.comprarProducto(new Moneda1000(), InfoProducto.SPRITE);
-            expendedor.comprarProducto(new Moneda1000(), InfoProducto.SPRITE);
+            expendedor.comprarProducto(new Moneda1000(), InfoProducto.COCA);
+            expendedor.comprarProducto(new Moneda1000(), InfoProducto.COCA);
+            expendedor.comprarProducto(new Moneda1000(), InfoProducto.COCA);
         }catch (Exception e){
             System.out.println("A ocurrido un error" + e);
         }
         actualizarDepositosProductos();
+        actualizarDepositosMonedas();
+
+        this.add(panelZonaSuperior);
+        this.add(panelZonaInferior);
+    }
+
+    public void actualizarProductoComprado() {
+        this.productoComprado = new PanelProducto(expendedor.getProducto());
+        productoComprado.revalidate();
+        productoComprado.repaint();
+    }
+
+    public Producto getProducto() {
+        return expendedor.getProducto();
     }
 
     public void actualizarDepositosProductos() {
@@ -140,13 +154,16 @@ public class PanelExpendedor extends JPanel {
         depositoMonedasIngresadas.actualizarUltimosElementos(expendedor.getDepositoMonedasIngresadas().size());
     }
 
+
     @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        for (JPanel panelDepositoProducto: panelesDepositoProducto) {
-            panelDepositoProducto.paint(g);
-        }
-        depositoMonedasVuelto.paint(g);
-        depositoMonedasIngresadas.paint(g);
+    public void paintComponents(Graphics g) {
+        super.paintComponents(g);
+        depositoCocaCola.paintComponents(g);
+        depositoFanta.paintComponents(g);
+        depositoSprite.paintComponents(g);
+        depositoSnickers.paintComponents(g);
+        depositoSuper8.paintComponents(g);
+        depositoMonedasVuelto.paintComponents(g);
+        depositoMonedasIngresadas.paintComponents(g);
     }
 }
