@@ -34,9 +34,16 @@ public class PanelDepositoMoneda extends JPanel {
             deposito.addElemento(moneda);
         }
     }
-    @Override
+    /*@Override
     public void paint(Graphics g) {
         super.paint(g);
+        for (PanelMoneda panelMoneda : panelesMonedas) panelMoneda.paint(g);
+    }*/
+
+    @Override
+    public void paintComponents(Graphics g) {
+        super.paintComponents(g);
+        for (PanelMoneda panelMoneda : panelesMonedas) panelMoneda.paint(g);
     }
 }
 

@@ -33,22 +33,27 @@ public class PanelProducto extends JPanel {
         super.paint(g);
         g.setColor(Color.BLACK);
         g.drawRect(0, 0, getWidth(), getHeight());
-        switch (producto.consumir()){
-            case "cocacola":
-                g.drawImage(logoCocaCola, 0, 0, this);
-                break;
-            case "sprite":
-                g.drawImage(logoSprite, 0, 0, this);
-                break;
-            case "fanta":
-                g.drawImage(logoFanta, 0, 0, this);
-                break;
-            case "snickers":
-                g.drawImage(logoSnickers, 0, 0, this);
-                break;
-            case "super 8":
-                g.drawImage(logoSuper8, 0, 0, this);
-                break;
+        if (producto != null) {
+            switch (producto.consumir()) {
+                case "cocacola":
+                    g.drawImage(logoCocaCola, 0, 0, this);
+                    break;
+                case "sprite":
+                    g.drawImage(logoSprite, 0, 0, this);
+                    break;
+                case "fanta":
+                    g.drawImage(logoFanta, 0, 0, this);
+                    break;
+                case "snickers":
+                    g.drawImage(logoSnickers, 0, 0, this);
+                    break;
+                case "super 8":
+                    g.drawImage(logoSuper8, 0, 0, this);
+                    break;
+            }
+        }
+        else {
+            g.drawString("No hay producto", getWidth() / 2, getHeight() / 2);
         }
     }
 }

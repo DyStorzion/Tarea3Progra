@@ -44,12 +44,16 @@ public class PanelDepositoProducto <T> extends JPanel {
         this.remove(panelProducto);
     }
 
-    @Override
+    /*@Override
     public void paint(Graphics g) {
         super.paint(g);
-        for  (int i = 0; i < panelesProductos.size(); i++){
-            panelesProductos.get(i).paint(g);
-        }
+        for (PanelProducto panelesProducto : panelesProductos) panelesProducto.paint(g);
+    }*/
+
+    @Override
+    public void paintComponents(Graphics g) {
+        super.paintComponents(g);
+        for (PanelProducto panelesProducto : panelesProductos) panelesProducto.paint(g);
     }
 }
 
