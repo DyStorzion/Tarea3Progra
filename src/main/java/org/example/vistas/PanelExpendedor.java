@@ -4,8 +4,6 @@ import org.example.modelos.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -21,9 +19,10 @@ public class PanelExpendedor extends JPanel {
     private PanelDepositoMoneda depositoMonedasVuelto;
     private ArrayList<JPanel> panelesDepositoProducto;
     private PanelProducto productoComprado;
+    private JPanel panelMitadSuperiorZonaInferior;
     private int cantidadBebidas;
-    public PanelExpendedor(Expendedor expendedor){
-        this.expendedor = expendedor;
+    public PanelExpendedor(){
+        this.expendedor = new Expendedor(3);
         this.panelesDepositoProducto = new ArrayList<>();
         this.cantidadBebidas = expendedor.getDepositoSnickers().size();
         this.depositoCocaCola = new PanelDepositoProducto<>(expendedor.getDepositoCoca());
@@ -56,37 +55,45 @@ public class PanelExpendedor extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                boolean seRealizaronCambios = false;
                 if(expendedor.getDepositoCoca().size() == 0){
                     for(int i = 0; i < cantidadBebidas; i++){
-                        expendedor.getDepositoCoca().addElemento(new CocaCola(i + 100));
+                        expendedor.getDepositoCoca().addElemento(new CocaCola());
+                        seRealizaronCambios = true;
                     }
                 }
                 if(expendedor.getDepositoFanta().size() == 0){
                     for(int i = 0; i < cantidadBebidas; i++){
-                        expendedor.getDepositoFanta().addElemento(new Fanta(i + 200));
+                        expendedor.getDepositoFanta().addElemento(new Fanta());
+                        seRealizaronCambios = true;
                     }
                 }
                 if(expendedor.getDepositoSprite().size() == 0){
                     for(int i = 0; i < cantidadBebidas; i++){
-                        expendedor.getDepositoSprite().addElemento(new Sprite(i + 300));
+                        expendedor.getDepositoSprite().addElemento(new Sprite());
+                        seRealizaronCambios = true;
                     }
                 }
                 if(expendedor.getDepositoSnickers().size() == 0){
                     for(int i = 0; i < cantidadBebidas; i++){
-                        expendedor.getDepositoSnickers().addElemento(new Snickers(i + 400));
+                        expendedor.getDepositoSnickers().addElemento(new Snickers());
+                        seRealizaronCambios = true;
                     }
                 }
                 if(expendedor.getDepositoSuper8().size() == 0){
                     for(int i = 0; i < cantidadBebidas; i++){
-                        expendedor.getDepositoSuper8().addElemento(new Super8(i + 500));
+                        expendedor.getDepositoSuper8().addElemento(new Super8());
+                        seRealizaronCambios = true;
                     }
                 }
-                for (JPanel panelDepositoProducto : panelesDepositoProducto) {
-                    panelZonaSuperior.add(panelDepositoProducto);
+                if (seRealizaronCambios){
+                    for (JPanel panelDepositoProducto : panelesDepositoProducto) {
+                        panelZonaSuperior.add(panelDepositoProducto);
+                    }
+                    panelZonaSuperior.revalidate();
+                    panelZonaSuperior.repaint();
+                    actualizarDepositosProductos();
                 }
-                panelZonaSuperior.revalidate();
-                panelZonaSuperior.repaint();
-                actualizarDepositosProductos();
             }
         });
 
@@ -99,25 +106,15 @@ public class PanelExpendedor extends JPanel {
 
         JPanel panelZonaInferior = new JPanel(new GridLayout(2,1));
         panelZonaInferior.setBackground(Color.lightGray);
-        JPanel panelMitadSuperior = new JPanel(new GridLayout(1,2));
-        JPanel panelMitadInferior = new JPanel(new GridLayout(1,1));
+        panelMitadSuperiorZonaInferior = new JPanel(new GridLayout(1,2));
+        JPanel panelMitadInferiorZonaInferior = new JPanel(new GridLayout(1,1));
 
-        panelMitadSuperior.add(depositoMonedasIngresadas);
-        panelMitadSuperior.add(productoComprado);
-        panelMitadInferior.add(depositoMonedasVuelto);
+        panelMitadSuperiorZonaInferior.add(depositoMonedasIngresadas);
+        panelMitadSuperiorZonaInferior.add(productoComprado);
+        panelMitadInferiorZonaInferior.add(depositoMonedasVuelto);
 
-        panelZonaInferior.add(panelMitadSuperior);
-        panelZonaInferior.add(panelMitadInferior);
-
-        try {
-            expendedor.comprarProducto(new Moneda1000(), InfoProducto.COCA);
-            expendedor.comprarProducto(new Moneda1000(), InfoProducto.COCA);
-            expendedor.comprarProducto(new Moneda1000(), InfoProducto.COCA);
-        }catch (Exception e){
-            System.out.println("A ocurrido un error" + e);
-        }
-        actualizarDepositosProductos();
-        actualizarDepositosMonedas();
+        panelZonaInferior.add(panelMitadSuperiorZonaInferior);
+        panelZonaInferior.add(panelMitadInferiorZonaInferior);
 
         this.add(panelZonaSuperior);
         this.add(panelZonaInferior);
@@ -125,8 +122,11 @@ public class PanelExpendedor extends JPanel {
 
     public void actualizarProductoComprado() {
         this.productoComprado = new PanelProducto(expendedor.getProducto());
-        productoComprado.revalidate();
-        productoComprado.repaint();
+        panelMitadSuperiorZonaInferior.removeAll();
+        panelMitadSuperiorZonaInferior.add(depositoMonedasIngresadas);
+        panelMitadSuperiorZonaInferior.add(productoComprado);
+        panelMitadSuperiorZonaInferior.revalidate();
+        panelMitadSuperiorZonaInferior.repaint();
     }
 
     public Producto getProducto() {
@@ -140,14 +140,6 @@ public class PanelExpendedor extends JPanel {
         depositoSnickers.actualizarUltimosElementos(expendedor.getDepositoSnickers().size());
         depositoSuper8.actualizarUltimosElementos(expendedor.getDepositoSuper8().size());
     }
-
-    /*public void quitarProductos(){
-        depositoCocaCola.quitarElementos();
-        depositoFanta.quitarElementos();
-        depositoSprite.quitarElementos();
-        depositoSnickers.quitarElementos();
-        depositoSuper8.quitarElementos();
-    }*/
 
     public void actualizarDepositosMonedas() {
         depositoMonedasVuelto.actualizarUltimosElementos(expendedor.getDepositoMonedas().size());
@@ -165,5 +157,6 @@ public class PanelExpendedor extends JPanel {
         depositoSuper8.paintComponents(g);
         depositoMonedasVuelto.paintComponents(g);
         depositoMonedasIngresadas.paintComponents(g);
+        productoComprado.paintComponents(g);
     }
 }
