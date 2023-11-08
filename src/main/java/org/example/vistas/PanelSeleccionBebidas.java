@@ -15,7 +15,6 @@ public class PanelSeleccionBebidas extends JPanel {
 
     ArrayList<PanelProducto> panelesProductos;
     public PanelSeleccionBebidas(int x, int y, int ancho, int alto) {
-        System.out.println(ancho + " " + alto);
         this.setBounds(x, y, ancho, alto);
         setLayout(new GridLayout(5, 2));
 

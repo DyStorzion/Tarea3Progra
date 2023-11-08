@@ -9,36 +9,27 @@ import java.util.Arrays;
 
 public class PanelComprador extends JPanel {
     private Comprador comprador;
-    JButton crearCompradorBoton;
-    JLabel descripcionCrearComprador;
+
     PanelSeleccionBebidas menuBebidas;
     PanelSeleccionMoneda menuMonedas;
+    PanelEnviarDatos menuDatos;
 
     public PanelComprador(){
         this.setBackground(Color.WHITE);
-        this.setLayout(null);
+        this.setLayout(new BorderLayout());
 
-        enviarDatos();
+        menuDatos = new PanelEnviarDatos();
+        this.add(menuDatos, BorderLayout.SOUTH);
+
         menuBebidas = new PanelSeleccionBebidas(50, 50, 160, 400);
-        this.add(menuBebidas);
+        this.add(menuBebidas, BorderLayout.LINE_START);
 
-        menuMonedas = new PanelSeleccionMoneda(600, 50, 160,340);
-        this.add(menuMonedas);
+
+        menuMonedas = new PanelSeleccionMoneda(50, 50, 160,400);
+        this.add(menuMonedas, BorderLayout.LINE_END);
     }
 
-    private void enviarDatos(){
-        crearCompradorBoton = new JButton();
-        crearCompradorBoton.setBounds(700, 650, 50, 50);
 
-        descripcionCrearComprador = new JLabel("Presione el boton para realizar una compra.");
-        descripcionCrearComprador.setBounds(450, 650, 275, 50);
-        descripcionCrearComprador.setOpaque(true);
-        descripcionCrearComprador.setBackground(Color.GRAY);
-
-
-        this.add(crearCompradorBoton);
-        this.add(descripcionCrearComprador);
-    }
 
 
 

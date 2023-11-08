@@ -15,7 +15,7 @@ public class PanelSeleccionMoneda extends JPanel{
     ArrayList<PanelMoneda> panelesMoneda;
     public PanelSeleccionMoneda(int x, int y, int ancho, int alto) {
         setLayout(new GridLayout(4,2));
-        setBounds(x, y, ancho, alto);
+        setPreferredSize(new Dimension(ancho, alto));
         ArrayList<Moneda> monedasModelo = new ArrayList<>(Arrays.asList(
                 new Moneda100(),
                 new Moneda500(),
