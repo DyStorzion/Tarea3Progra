@@ -7,11 +7,11 @@ package org.example.modelos;
 
 public class Super8 extends Dulces{
     /**
-     * Se pasa el numero de serie de snickers.
-     * @param serie numero de serie.
+     *
+     *
      */
-    public Super8(int serie) {
-        super(serie);
+    public Super8() {
+        super();
     }
 
     /**

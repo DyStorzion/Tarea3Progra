@@ -7,11 +7,11 @@ package org.example.modelos;
 public abstract class Dulces extends Producto{
 
     /**
-     * Se entrega numero de serie del dulce.
-     * @param serie numero de serie.
+     *
+     *
      */
-    public Dulces(int serie) {
-        super(serie);
+    public Dulces() {
+        super();
     }
 
     /**
@@ -21,6 +21,6 @@ public abstract class Dulces extends Producto{
      */
     @Override
     public String toString() {
-        return "Producto: Dulces\n";
+        return super.toString() + "Producto: Dulce\n";
     }
 }

@@ -28,11 +28,11 @@ public class Expendedor {
         DepositoMonedas = new Deposito<Moneda>();
         DepositoMonedasIngresadas = new Deposito<Moneda>();
         for (int i = 0; i < n; i++) {
-            DepositoCoca.addElemento(new CocaCola(100 + i));
-            DepositoSprite.addElemento(new Sprite(200 + i));
-            DepositoFanta.addElemento(new Fanta(300 + i));
-            DepositoSuper8.addElemento(new Super8(400 + i));
-            DepositoSnickers.addElemento(new Snickers(500 + i));
+            DepositoCoca.addElemento(new CocaCola());
+            DepositoSprite.addElemento(new Sprite());
+            DepositoFanta.addElemento(new Fanta());
+            DepositoSuper8.addElemento(new Super8());
+            DepositoSnickers.addElemento(new Snickers());
         }
     }
 

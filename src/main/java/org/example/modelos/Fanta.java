@@ -5,8 +5,8 @@ package org.example.modelos;
  * @author Carlos Alvarez
  */
 public class Fanta extends Bebida{
-    public Fanta(int serie) {
-        super(serie);
+    public Fanta() {
+        super();
     }
 
     /**
