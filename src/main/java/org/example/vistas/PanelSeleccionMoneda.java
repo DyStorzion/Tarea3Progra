@@ -39,4 +39,28 @@ public class PanelSeleccionMoneda extends JPanel{
 
         botonesMoneda.get(0).setSelected(true);
     }
+
+    public Moneda getOpcion(){
+        int opcion = 0;
+        for (int i = 0; i < botonesMoneda.size(); i++){
+            if (botonesMoneda.get(i).isSelected()){
+                opcion = i;
+                break;
+            }
+        }
+        switch (opcion){
+            case 0:
+                return new Moneda100();
+
+            case 1:
+                return new Moneda500();
+
+            case 2:
+                return new Moneda1000();
+
+            case 3:
+                return new Moneda1500();
+        }
+        return null;
+    }
 }

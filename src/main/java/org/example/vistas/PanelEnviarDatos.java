@@ -2,11 +2,18 @@ package org.example.vistas;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PanelEnviarDatos extends JPanel {
     JButton crearCompradorBoton;
     JLabel descripcionCrearComprador;
-    public PanelEnviarDatos() {
+    ActionListener botonPresionado;
+    PanelComprador panelComprador;
+
+    public PanelEnviarDatos(PanelComprador panelComprador) {
+        this.panelComprador = panelComprador;
+
         setLayout(new GridLayout(1, 2));
 
         crearCompradorBoton = new JButton();
@@ -20,7 +27,17 @@ public class PanelEnviarDatos extends JPanel {
 
         this.add(crearCompradorBoton, BorderLayout.PAGE_END);
         this.add(descripcionCrearComprador);
+        seEnviaLosDatos();
+    }
 
+    private void seEnviaLosDatos(){
+        botonPresionado = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelComprador.crearComprador();
+            }
+        };
+        crearCompradorBoton.addActionListener(botonPresionado);
     }
 
 }
