@@ -40,6 +40,8 @@ public class PanelSeleccionBebidas extends JPanel {
             this.add(panel);
 
         }
+
+        botonesProductos.get(0).setSelected(true);
     }
 
 

@@ -35,7 +35,8 @@ public class PanelSeleccionMoneda extends JPanel{
             PanelMoneda panel = new PanelMoneda(monedasModelo.get(i));
             panelesMoneda.add(panel);
             this.add(panel);
-
         }
+
+        botonesMoneda.get(0).setSelected(true);
     }
 }
