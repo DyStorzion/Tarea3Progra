@@ -8,6 +8,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+/**
+ *Clase para manejar toda la zona izquierda del expendedor
+ * maneja los depositos de productos, de monedas y el panel del producto que se compro
+ * @author Benjamin Alonso Espinoza Henriquez
+ */
 public class PanelExpendedor extends JPanel {
     private Expendedor expendedor;
     private PanelDepositoProducto<CocaCola> depositoCocaCola;
@@ -23,6 +28,12 @@ public class PanelExpendedor extends JPanel {
     private PanelComprador panelComprador;
     private int cantidadBebidas;
     private boolean seRetiroProducto;
+
+    /**
+     *Constructor de la clase
+     * se encarga de asignar el deposito a sus respectivos paneles y de agregar un ActionListener para rellenar los depositos
+     * cuando sea necesario
+     */
     public PanelExpendedor(){
         this.expendedor = new Expendedor(3);
         this.panelesDepositoProducto = new ArrayList<>();
@@ -128,6 +139,9 @@ public class PanelExpendedor extends JPanel {
         this.add(panelDepositoMonedas);
     }
 
+    /**
+     *Metodo encargado de actualizar el panel del producto que se compro
+     */
     public void actualizarProductoComprado() {
         this.productoComprado = new PanelProducto(expendedor.getProducto());
         panelMitadSuperiorZonaInferior.removeAll();
@@ -149,6 +163,9 @@ public class PanelExpendedor extends JPanel {
         });
     }
 
+    /**
+     *Metodo que se encarga de eliminar el producto comprado del panel
+     */
     public void eliminarProductoComprado() {
         this.productoComprado = new PanelProducto(null);
         panelMitadSuperiorZonaInferior.removeAll();
@@ -170,6 +187,9 @@ public class PanelExpendedor extends JPanel {
         });
     }
 
+    /**
+     *Metodo que se encarga de actualizar todos los depositos de productos
+     */
     public void actualizarDepositosProductos() {
         depositoCocaCola.actualizarUltimosElementos(expendedor.getDepositoCoca().size());
         depositoFanta.actualizarUltimosElementos(expendedor.getDepositoFanta().size());
@@ -178,6 +198,9 @@ public class PanelExpendedor extends JPanel {
         depositoSuper8.actualizarUltimosElementos(expendedor.getDepositoSuper8().size());
     }
 
+    /**
+     *Metodo que se encarga de actualizar todos los depositos de monedas
+     */
     public void actualizarDepositosMonedas() {
         depositoMonedasVuelto.actualizarUltimosElementos(expendedor.getDepositoMonedas().size());
         depositoMonedasIngresadas.actualizarUltimosElementos(expendedor.getDepositoMonedasIngresadas().size());
@@ -195,6 +218,9 @@ public class PanelExpendedor extends JPanel {
         this.panelComprador = panelComprador;
     }
 
+    /**
+     *Metodo para cambiar el estado de seRetiroProducto para saber cuando eliminar el producto comprado de su panel
+     */
     public void seComproProducto() {
         this.seRetiroProducto = false;
     }

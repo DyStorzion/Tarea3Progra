@@ -7,10 +7,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ *Clase para manejar los depositos de producto en el expendedor
+ * @author Benjamin Alonso Espinoza Henriquez
+ * @author Carlos Tomas Alvarez Norambuena
+ */
 public class PanelDepositoMoneda extends JPanel {
     private Deposito<Moneda> deposito;
     private ArrayList<PanelMoneda> panelesMonedas;
 
+    /**
+     *Constructor de la clase
+     * @param deposito deposito de monedas
+     */
     public PanelDepositoMoneda(Deposito<Moneda> deposito) {
         this.deposito = deposito;
         this.panelesMonedas = new ArrayList<>();
@@ -23,6 +32,10 @@ public class PanelDepositoMoneda extends JPanel {
         }
     }
 
+    /**
+     *Metodo para actualizar los elementos del deposito
+     * @param elementosActualizar cuantos elementos se desea actualizar
+     */
     public void actualizarUltimosElementos(int elementosActualizar){
         ArrayList<Moneda> monedas = new ArrayList<>();
         for (int i = 0; i < elementosActualizar; i ++)
@@ -34,11 +47,6 @@ public class PanelDepositoMoneda extends JPanel {
             deposito.addElemento(moneda);
         }
     }
-    /*@Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        for (PanelMoneda panelMoneda : panelesMonedas) panelMoneda.paint(g);
-    }*/
 
     @Override
     public void paintComponents(Graphics g) {

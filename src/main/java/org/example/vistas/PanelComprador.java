@@ -7,7 +7,7 @@ import java.awt.*;
 
 /**
  * Clase que se va a encargar del panel de la izquierda de nuestro expendedor, que vendria siendo el panel de comprador.
- * author Carlos Tomas Alvarez Norambuena
+ * @author Carlos Tomas Alvarez Norambuena
  */
 
 public class PanelComprador extends JPanel {
