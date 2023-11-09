@@ -6,18 +6,27 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
- * Ambos realizamos cambios en esta calse a pesar de que solo uno hizo el push
+ * Panel que gestiona el mostrar una unica moneda de 100, 500, 1000 o 1500.
+ * Ambos realizamos cambios en esta clase a pesar de que solo uno hizo el push
  * @author Carlos Alvarez
  * @author Benjamin Espinoza
  */
 public class PanelMoneda extends JPanel {
     private Moneda moneda;
+
+    /**
+     * Constructor que solamente quita el layout e inicializa la variable.
+     * @param moneda
+     */
     public PanelMoneda(Moneda moneda) {
         this.moneda = moneda;
         this.setLayout(null);
     }
 
+    /**
+     * Se crea circlo que imprime el codigo de serie (la referencia) y el valor de la moneda
+     * @param g  the <code>Graphics</code> context in which to paint
+     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);

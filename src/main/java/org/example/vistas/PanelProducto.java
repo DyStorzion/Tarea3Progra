@@ -5,6 +5,10 @@ import org.example.modelos.Producto;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Clase para mostrar un panel con un producto.
+ * @author Carlos Tomas Alvarez Norambuena
+ */
 public class PanelProducto extends JPanel {
     private Producto producto;
     private Image logoCocaCola;
@@ -15,6 +19,13 @@ public class PanelProducto extends JPanel {
     private int anchoImagen;
     private int altoImagen;
 
+
+    /**
+     * Se entrega un producto y se inicializan las posibles imagenes que puede contener este panel.
+     * Se realiza esto a modo de evitar un bug que evitaba que se cargata la imagen.
+     * Se establece un valor por defecto de 80*80 para el tamaño del mismo.
+     * @param producto se entrega el producto del que se quiere hacer la imagen.
+     */
     public PanelProducto(Producto producto) {
         this.setBackground(Color.WHITE);
         this.producto = producto;
@@ -28,6 +39,15 @@ public class PanelProducto extends JPanel {
         logoSnickers = new ImageIcon("assets/ImagenSnickers.png").getImage().getScaledInstance(anchoImagen, altoImagen, Image.SCALE_SMOOTH);
         logoSuper8 = new ImageIcon("assets/ImagenSuper8.png").getImage().getScaledInstance(anchoImagen, altoImagen, Image.SCALE_SMOOTH);
     }
+
+    /**
+     * Se entrega un producto y se inicializan las posibles imagenes que puede contener este panel.
+     * Se realiza esto a modo de evitar un bug que evitaba que se cargata la imagen.
+     * Se establece un valor de anchoImagen y altoImagen para el tamaño del mismo.
+     * @param producto se entrega el producto del que se quiere hacer la imagen.
+     * @param anchoImagen
+     * @param altoImagen
+     */
     public PanelProducto(Producto producto, int anchoImagen, int altoImagen) {
         this.setBackground(Color.WHITE);
         this.producto = producto;
@@ -40,6 +60,10 @@ public class PanelProducto extends JPanel {
         logoSuper8 = new ImageIcon("assets/ImagenSuper8.png").getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
     }
 
+    /**
+     * Se dibuja la imagen dependiendo del producto
+     * @param g  the <code>Graphics</code> context in which to paint
+     */
     @Override
     public void paint(Graphics g){
         super.paint(g);
