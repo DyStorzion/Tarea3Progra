@@ -141,7 +141,7 @@ public class PanelExpendedor extends JPanel {
                 super.mouseClicked(e);
                 if(!seRetiroProducto) {
                     panelComprador.getPanelPersona().setEstadoProducto();
-                    panelComprador.getAdvertenciaMalUso().setText("Presione el producto para consumirlo");
+                    panelComprador.getMensajePanelArriba().setText("Presione el producto para consumirlo");
                     eliminarProductoComprado();
                     seRetiroProducto = true;
                 }
@@ -162,7 +162,7 @@ public class PanelExpendedor extends JPanel {
                 super.mouseClicked(e);
                 if(!seRetiroProducto) {
                     panelComprador.getPanelPersona().setEstadoProducto();
-                    panelComprador.getAdvertenciaMalUso().setText("Presione el producto para consumirlo");
+                    panelComprador.getMensajePanelArriba().setText("Presione el producto para consumirlo");
                     eliminarProductoComprado();
                     seRetiroProducto = true;
                 }

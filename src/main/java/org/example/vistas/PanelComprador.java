@@ -4,9 +4,11 @@ import org.example.modelos.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
+
+/**
+ * Clase que se va a encargar del panel de la izquierda de nuestro expendedor, que vendria siendo el panel de comprador.
+ * author Carlos Tomas Alvarez Norambuena
+ */
 
 public class PanelComprador extends JPanel {
     private Comprador comprador;
@@ -16,11 +18,17 @@ public class PanelComprador extends JPanel {
     private PanelEnviarDatos menuDatos;
     private PanelPersona panelPersona;
     private Expendedor expendedor;
-    private JLabel advertenciaMalUso;
-    private JPanel panelAdvertancia;
+    private JLabel MensajePanelArriba;
+    private JPanel panelMensajeArriba;
     private Boolean hayBebidaAConsumir;
     private PanelExpendedor panelExpendedor;
 
+    /**
+     * Constructor de la clase PanelComprador.
+     * Se inicializan todos los subpaneles que este contiene. Tambien se pasa panelExpendedor para tener una asociacion
+     * entre ambos objetos.
+     * @param panelExpendedor
+     */
     public PanelComprador(PanelExpendedor panelExpendedor){
         this.panelExpendedor = panelExpendedor;
         this.expendedor = panelExpendedor.getExpendedor();
@@ -42,28 +50,36 @@ public class PanelComprador extends JPanel {
 
         mostrarEstadoDeCompra();
 
-        panelPersona = new PanelPersona(advertenciaMalUso, this);
+        panelPersona = new PanelPersona(MensajePanelArriba, this);
         this.add(panelPersona);
 
     }
 
+    /**
+     * Funcion para hacer el panel de arriba que muestra mensajes sobre el estado de la compra.
+     */
     private void mostrarEstadoDeCompra(){
-        panelAdvertancia = new JPanel();
-        panelAdvertancia.setBackground(Color.BLACK);
+        panelMensajeArriba = new JPanel();
+        panelMensajeArriba.setBackground(Color.BLACK);
 
-        advertenciaMalUso = new JLabel();
-        advertenciaMalUso.setPreferredSize(new Dimension(50, 50));
-        advertenciaMalUso.setHorizontalAlignment(SwingConstants.CENTER);
+        MensajePanelArriba = new JLabel();
+        MensajePanelArriba.setPreferredSize(new Dimension(50, 50));
+        MensajePanelArriba.setHorizontalAlignment(SwingConstants.CENTER);
 
-        advertenciaMalUso.setForeground(Color.WHITE);
-        advertenciaMalUso.setFont(new Font("Arial", Font.PLAIN, 24));
-        advertenciaMalUso.setPreferredSize(new Dimension(500, 50));
+        MensajePanelArriba.setForeground(Color.WHITE);
+        MensajePanelArriba.setFont(new Font("Arial", Font.PLAIN, 24));
+        MensajePanelArriba.setPreferredSize(new Dimension(500, 50));
 
-        panelAdvertancia.add(advertenciaMalUso);
+        panelMensajeArriba.add(MensajePanelArriba);
 
-        this.add(panelAdvertancia, BorderLayout.NORTH);
+        this.add(panelMensajeArriba, BorderLayout.NORTH);
     }
 
+    /**
+     * Funcion para instanciar el comprador.
+     * Aqui se utiliza la asociacion para poder instanciar el comprador.
+     * Tambien se gestiona todas las posibles excepciones y se realizan las actualizaciones correspondientes.
+     */
     public void crearComprador(){
         Moneda monedaSeleccionada = menuMonedas.getOpcion();
         InfoProducto opcionBebida = menuBebidas.getOpcion();
@@ -85,38 +101,42 @@ public class PanelComprador extends JPanel {
             panelPersona.setVuelto(comprador.cuantoVuelto());
             panelPersona.setQueConsumio(comprador.queConsumiste());
             menuDatos.desactivarBoton();
-            advertenciaMalUso.setText("Haga click en el producto para retirarlo");
+            MensajePanelArriba.setText("Haga click en el producto para retirarlo");
         }
         catch (NoHayProductoException e) {
             panelExpendedor.actualizarDepositosMonedas();
             expendedor.getDepositoMonedasIngresadas().getElemento();
             expendedor.getVuelto();
-            advertenciaMalUso.setText("No hay producto.");
+            MensajePanelArriba.setText("No hay producto.");
         }
         catch (PagoIncorrectoException e) {
             panelExpendedor.actualizarDepositosMonedas();
             expendedor.getVuelto();
-            advertenciaMalUso.setText("Pago incorrecto.");
+            MensajePanelArriba.setText("Pago incorrecto.");
         }
         catch (PagoInsuficienteException e) {
             panelExpendedor.actualizarDepositosMonedas();
             expendedor.getVuelto();
-            advertenciaMalUso.setText("Pago insuficiente.");
+            MensajePanelArriba.setText("Pago insuficiente.");
         }
+    }
+
+    /**
+     * Funcion para activar el boton.
+     */
+    public void activarBebida(){
+        hayBebidaAConsumir = true;
+        menuDatos.activarBoton();
     }
 
     public PanelPersona getPanelPersona() {
         return panelPersona;
     }
 
-    public JLabel getAdvertenciaMalUso() {
-        return advertenciaMalUso;
+    public JLabel getMensajePanelArriba() {
+        return MensajePanelArriba;
     }
 
-    public void activarBebida(){
-        hayBebidaAConsumir = true;
-        menuDatos.activarBoton();
-    }
 
     public PanelExpendedor getPanelExpendedor() {
         return panelExpendedor;
