@@ -5,8 +5,8 @@ package org.example.modelos;
  * @author Carlos Alvarez
  */
 public class Sprite extends Bebida {
-    public Sprite(int serie) {
-        super(serie);
+    public Sprite() {
+        super();
     }
 
     /**

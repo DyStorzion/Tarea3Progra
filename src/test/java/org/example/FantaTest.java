@@ -19,7 +19,7 @@ class FantaTest {
      */
     @BeforeEach
     void setUp() {
-        fanta = new Fanta(4);
+        fanta = new Fanta();
     }
 
     /**

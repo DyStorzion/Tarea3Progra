@@ -28,7 +28,7 @@ public class PanelDepositoProducto <T> extends JPanel {
         ArrayList<T> productos = new ArrayList<>();
         for (int i = 0; i < elementosActualizar; i ++)
             productos.add(deposito.getElemento());
-
+        this.removeAll();
         for (T producto : productos){
             PanelProducto panelProducto = new PanelProducto((Producto) producto);
             this.add(panelProducto);
@@ -40,16 +40,20 @@ public class PanelDepositoProducto <T> extends JPanel {
     public void quitarElementos(){
         if (deposito.size() >= panelesProductos.size())
             return;
-
-        panelesProductos.remove(panelesProductos.size() - 1);
+        PanelProducto panelProducto = panelesProductos.remove(panelesProductos.size() - 1);
+        this.remove(panelProducto);
     }
 
-    @Override
+    /*@Override
     public void paint(Graphics g) {
         super.paint(g);
-        for  (int i = 0; i < deposito.size(); i++){
-            panelesProductos.get(i).paint(g);
-        }
+        for (PanelProducto panelesProducto : panelesProductos) panelesProducto.paint(g);
+    }*/
+
+    @Override
+    public void paintComponents(Graphics g) {
+        super.paintComponents(g);
+        for (PanelProducto panelesProducto : panelesProductos) panelesProducto.paint(g);
     }
 }
 

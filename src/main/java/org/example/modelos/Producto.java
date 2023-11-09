@@ -6,13 +6,14 @@ package org.example.modelos;
  */
 public abstract class Producto {
     private int serie;
+    private static int SERIE = 0;
 
     /**
      * Se pasa el numero de serie dado por el expendedor de manera arbitraria.
-     * @param serie numero de serie de cada producto.
      */
-    public Producto(int serie) {
-        this.serie = serie;
+    public Producto() {
+        Producto.SERIE++;
+        this.serie = Producto.SERIE;
     }
 
     /**
@@ -28,5 +29,10 @@ public abstract class Producto {
      */
     public int getSerie() {
         return serie;
+    }
+
+    @Override
+    public String toString() {
+        return "Numero de serie: " + getSerie() + "\n";
     }
 }

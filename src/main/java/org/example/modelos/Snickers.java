@@ -10,8 +10,8 @@ public class Snickers extends Dulces{
      * Se pasa el numero de serie de snickers.
      * @param serie numero de serie.
      */
-    public Snickers(int serie) {
-        super(serie);
+    public Snickers() {
+        super();
     }
 
     /**
