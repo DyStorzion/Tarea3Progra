@@ -104,10 +104,12 @@ public class PanelExpendedor extends JPanel {
         panelDepositoMonedas.setLayout(new BorderLayout());
 
         JPanel panelZonaInferior = new JPanel(new GridLayout(2,1));
-        panelDepositoMonedas.add(panelZonaInferior, BorderLayout.CENTER);
-        JLabel mensajeDepositoMonedas = new JLabel("Deposito monedas");
+        JLabel mensajeDepositoMonedas = new JLabel("Deposito monedas ingresadas");
         mensajeDepositoMonedas.setPreferredSize(new Dimension(50, 50));
         panelDepositoMonedas.add(mensajeDepositoMonedas, BorderLayout.NORTH);
+        JLabel mensajeDepositoMonedasVuelto = new JLabel("Deposito monedas de vuelto");
+        mensajeDepositoMonedasVuelto.setPreferredSize(new Dimension(50, 50));
+        panelDepositoMonedas.add(mensajeDepositoMonedasVuelto,BorderLayout.SOUTH);
 
 
         panelZonaInferior.setBackground(Color.lightGray);
@@ -120,6 +122,7 @@ public class PanelExpendedor extends JPanel {
 
         panelZonaInferior.add(panelMitadSuperiorZonaInferior);
         panelZonaInferior.add(panelMitadInferiorZonaInferior);
+        panelDepositoMonedas.add(panelZonaInferior, BorderLayout.CENTER);
 
         this.add(panelZonaSuperior);
         this.add(panelDepositoMonedas);

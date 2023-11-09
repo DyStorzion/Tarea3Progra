@@ -89,14 +89,17 @@ public class PanelComprador extends JPanel {
         }
         catch (NoHayProductoException e) {
             panelExpendedor.actualizarDepositosMonedas();
+            expendedor.getVuelto();
             advertenciaMalUso.setText("No hay producto.");
         }
         catch (PagoIncorrectoException e) {
             panelExpendedor.actualizarDepositosMonedas();
+            expendedor.getVuelto();
             advertenciaMalUso.setText("Pago incorrecto.");
         }
         catch (PagoInsuficienteException e) {
             panelExpendedor.actualizarDepositosMonedas();
+            expendedor.getVuelto();
             advertenciaMalUso.setText("Pago insuficiente.");
         }
     }
