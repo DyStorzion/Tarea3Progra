@@ -70,7 +70,6 @@ public class PanelComprador extends JPanel {
             comprador = new Comprador(monedaSeleccionada, opcionBebida, expendedor);
             panelPersona.setVuelto(comprador.cuantoVuelto());
             panelPersona.setQueConsumio(comprador.queConsumiste());
-            panelPersona.setEstadoABebida();
             menuDatos.desactivarBoton();
             advertenciaMalUso.setText("Haga click en el comprador para consumir");
         }

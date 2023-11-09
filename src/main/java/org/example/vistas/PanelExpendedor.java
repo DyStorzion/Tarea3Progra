@@ -120,16 +120,7 @@ public class PanelExpendedor extends JPanel {
         this.add(panelZonaSuperior);
         this.add(panelZonaInferior);
 
-        try {
-            expendedor.comprarProducto(new Moneda1000(), InfoProducto.FANTA);
-            expendedor.comprarProducto(new Moneda1000(), InfoProducto.FANTA);
-            expendedor.comprarProducto(new Moneda1000(), InfoProducto.FANTA);
-        }catch (Exception e){
 
-        }
-        actualizarDepositosMonedas();
-        actualizarProductoComprado();
-        actualizarDepositosProductos();
     }
 
     public void actualizarProductoComprado() {

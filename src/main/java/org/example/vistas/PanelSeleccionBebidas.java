@@ -19,11 +19,11 @@ public class PanelSeleccionBebidas extends JPanel {
         setLayout(new GridLayout(5, 2));
 
         ArrayList<Producto> productosModelo = new ArrayList<>(Arrays.asList(
-                new CocaCola(1),
-                new Sprite(1),
-                new Fanta(1),
-                new Super8(1),
-                new Snickers(1)
+                new CocaCola(),
+                new Sprite(),
+                new Fanta(),
+                new Super8(),
+                new Snickers()
         ));
         botonesProductos = new ArrayList<>();
         panelesProductos = new ArrayList<>();
