@@ -15,6 +15,7 @@ public class PanelComprador extends JPanel {
     PanelEnviarDatos menuDatos;
     Expendedor expendedor;
     JLabel advertenciaMalUso;
+    JPanel panelAdvertancia;
 
     public PanelComprador(){
         expendedor = new Expendedor(5);
@@ -30,38 +31,50 @@ public class PanelComprador extends JPanel {
 
         menuMonedas = new PanelSeleccionMoneda(50, 50, 160,400);
         this.add(menuMonedas, BorderLayout.LINE_END);
+
+        mostrarEstadoDeCompra();
+    }
+
+    private void mostrarEstadoDeCompra(){
+        panelAdvertancia = new JPanel();
+        panelAdvertancia.setBackground(Color.BLACK);
+
+        advertenciaMalUso = new JLabel();
+        advertenciaMalUso.setPreferredSize(new Dimension(50, 50));
+        advertenciaMalUso.setHorizontalAlignment(SwingConstants.CENTER);
+
+        advertenciaMalUso.setForeground(Color.WHITE);
+        advertenciaMalUso.setFont(new Font("Arial", Font.PLAIN, 24));
+        advertenciaMalUso.setPreferredSize(new Dimension(500, 50));
+
+        panelAdvertancia.add(advertenciaMalUso);
+
+        this.add(panelAdvertancia, BorderLayout.NORTH);
     }
 
     public void crearComprador(){
         Moneda monedaSeleccionada = menuMonedas.getOpcion();
         InfoProducto opcionBebida = menuBebidas.getOpcion();
-        System.out.println(monedaSeleccionada);
-        System.out.println(opcionBebida);
 
-
-        advertenciaMalUso = new JLabel();
         try {
             comprador = new Comprador(monedaSeleccionada, opcionBebida, expendedor);
-
-        } catch (NoHayProductoException e) {
-            advertenciaMalUso.setText("No hay producto.");
-
-        } catch (PagoIncorrectoException e) {
-            advertenciaMalUso.setText("Pago incorrecto.");
-            System.out.println("Pago incorrecto.");
-
-
-        } catch (PagoInsuficienteException e) {
-            advertenciaMalUso.setText("Pago insuficiente.");
-            System.out.println("dyasubghdjhsab");
+            advertenciaMalUso.setText("Todo bien con la compra.");
 
         }
-        finally {
-            this.add(advertenciaMalUso);
+        catch (NoHayProductoException e) {
+            advertenciaMalUso.setText("No hay producto.");
+        }
+        catch (PagoIncorrectoException e) {
+            advertenciaMalUso.setText("Pago incorrecto.");
+        }
+        catch (PagoInsuficienteException e) {
+            advertenciaMalUso.setText("Pago insuficiente.");
         }
     }
 
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
 
-
-
+    }
 }
