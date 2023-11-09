@@ -38,11 +38,11 @@ public class PanelComprador extends JPanel {
         menuDatos = new PanelEnviarDatos(this);
         this.add(menuDatos, BorderLayout.SOUTH);
 
-        menuBebidas = new PanelSeleccionProductos(50, 50, 160, 400);
+        menuBebidas = new PanelSeleccionProductos();
         this.add(menuBebidas, BorderLayout.LINE_START);
 
 
-        menuMonedas = new PanelSeleccionMoneda(50, 50, 160,400);
+        menuMonedas = new PanelSeleccionMoneda( 160,400);
         this.add(menuMonedas, BorderLayout.LINE_END);
 
 

@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PanelSeleccionMoneda extends JPanel{
-    ArrayList<JRadioButton> botonesMoneda;
+    private ArrayList<JRadioButton> botonesMoneda;
 
-    ButtonGroup grupoBotonesMoneda;
+    private ButtonGroup grupoBotonesMoneda;
 
-    ArrayList<PanelMoneda> panelesMoneda;
-    public PanelSeleccionMoneda(int x, int y, int ancho, int alto) {
+    private ArrayList<PanelMoneda> panelesMoneda;
+    public PanelSeleccionMoneda(int ancho, int alto) {
         setLayout(new GridLayout(4,2));
         setPreferredSize(new Dimension(ancho, alto));
         ArrayList<Moneda> monedasModelo = new ArrayList<>(Arrays.asList(

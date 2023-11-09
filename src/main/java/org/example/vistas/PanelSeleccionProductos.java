@@ -7,15 +7,20 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Clase para administrar el panel de la izquierda de panel comprador donde se seleccionan las bebidas.
+ * @author Carlos Tomas Alvarez Norambuena
+ */
 public class PanelSeleccionProductos extends JPanel {
 
-    ArrayList<JRadioButton> botonesProductos;
+    private ArrayList<JRadioButton> botonesProductos;
 
-    ButtonGroup grupoBotonesProductos;
+    private ButtonGroup grupoBotonesProductos;
 
-    ArrayList<PanelProducto> panelesProductos;
-    public PanelSeleccionProductos(int x, int y, int ancho, int alto) {
-        this.setBounds(x, y, ancho, alto);
+    private ArrayList<PanelProducto> panelesProductos;
+
+
+    public PanelSeleccionProductos() {
         setLayout(new GridLayout(5, 2));
 
         ArrayList<Producto> productosModelo = new ArrayList<>(Arrays.asList(
