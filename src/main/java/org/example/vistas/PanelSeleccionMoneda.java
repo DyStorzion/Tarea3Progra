@@ -7,12 +7,22 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Clase para encargarse del panel de la derecha de comprador donde se selecciona la moneda que se va a comprar.
+ * @author Carlos Tomas Alvarez Norambuena
+ */
 public class PanelSeleccionMoneda extends JPanel{
     private ArrayList<JRadioButton> botonesMoneda;
 
     private ButtonGroup grupoBotonesMoneda;
 
     private ArrayList<PanelMoneda> panelesMoneda;
+
+    /**
+     * Constructor de la clase PanelSeleccionMoneda para inicializar el layout y otros detalles esticos y los radiobotones
+     * @param ancho ancho del panel.
+     * @param alto alto del panel.
+     */
     public PanelSeleccionMoneda(int ancho, int alto) {
         setLayout(new GridLayout(4,2));
         setPreferredSize(new Dimension(ancho, alto));
@@ -40,6 +50,10 @@ public class PanelSeleccionMoneda extends JPanel{
         botonesMoneda.get(0).setSelected(true);
     }
 
+    /**
+     * Funcion que retorna la moneda que se selecciono para hacer la compra.
+     * @return Devuelve una moneda del valor seleccionado.
+     */
     public Moneda getOpcion(){
         int opcion = 0;
         for (int i = 0; i < botonesMoneda.size(); i++){
