@@ -101,6 +101,7 @@ public class PanelExpendedor extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                eliminarProductoComprado();
             }
         });
 
@@ -118,6 +119,17 @@ public class PanelExpendedor extends JPanel {
 
         this.add(panelZonaSuperior);
         this.add(panelZonaInferior);
+
+        try {
+            expendedor.comprarProducto(new Moneda1000(), InfoProducto.FANTA);
+            expendedor.comprarProducto(new Moneda1000(), InfoProducto.FANTA);
+            expendedor.comprarProducto(new Moneda1000(), InfoProducto.FANTA);
+        }catch (Exception e){
+
+        }
+        actualizarDepositosMonedas();
+        actualizarProductoComprado();
+        actualizarDepositosProductos();
     }
 
     public void actualizarProductoComprado() {
@@ -127,10 +139,29 @@ public class PanelExpendedor extends JPanel {
         panelMitadSuperiorZonaInferior.add(productoComprado);
         panelMitadSuperiorZonaInferior.revalidate();
         panelMitadSuperiorZonaInferior.repaint();
+        productoComprado.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                eliminarProductoComprado();
+            }
+        });
     }
 
-    public Producto getProducto() {
-        return expendedor.getProducto();
+    public void eliminarProductoComprado() {
+        this.productoComprado = new PanelProducto(null);
+        panelMitadSuperiorZonaInferior.removeAll();
+        panelMitadSuperiorZonaInferior.add(depositoMonedasIngresadas);
+        panelMitadSuperiorZonaInferior.add(productoComprado);
+        panelMitadSuperiorZonaInferior.revalidate();
+        panelMitadSuperiorZonaInferior.repaint();
+        productoComprado.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                eliminarProductoComprado();
+            }
+        });
     }
 
     public void actualizarDepositosProductos() {
@@ -141,13 +172,17 @@ public class PanelExpendedor extends JPanel {
         depositoSuper8.actualizarUltimosElementos(expendedor.getDepositoSuper8().size());
     }
 
+    public void actualizarDepositosMonedas() {
+        depositoMonedasVuelto.actualizarUltimosElementos(expendedor.getDepositoMonedas().size());
+        depositoMonedasIngresadas.actualizarUltimosElementos(expendedor.getDepositoMonedasIngresadas().size());
+    }
+
     public Expendedor getExpendedor() {
         return expendedor;
     }
 
-    public void actualizarDepositosMonedas() {
-        depositoMonedasVuelto.actualizarUltimosElementos(expendedor.getDepositoMonedas().size());
-        depositoMonedasIngresadas.actualizarUltimosElementos(expendedor.getDepositoMonedasIngresadas().size());
+    public Producto getProducto() {
+        return expendedor.getProducto();
     }
 
 
