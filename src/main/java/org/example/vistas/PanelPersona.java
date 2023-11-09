@@ -9,6 +9,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Clase para manejar el panel central del panel de comprador donde se dibuja una persona y ademas se consume el producto
+ *
+ * @author Carlos Tomas Alvarez Norambuena
+ */
 public class PanelPersona extends JPanel {
     private Image personaEsperando;
     private Image personaConBebida;
@@ -19,8 +24,13 @@ public class PanelPersona extends JPanel {
     private int vuelto;
     private PanelComprador panelComprador;
 
-    public PanelPersona(JLabel panelArriba, PanelComprador panelComprador) {
-        this.labelArriba = panelArriba;
+    /**
+     * Constructor de la clase PanelPersona.
+     * @param labelArriba se entrega la label de arriba del panel para que esta clase pueda modificarla directamente
+     * @param panelComprador panelComprador del cual este panel pertenece.
+     */
+    public PanelPersona(JLabel labelArriba, PanelComprador panelComprador) {
+        this.labelArriba = labelArriba;
         this.panelComprador = panelComprador;
 
         setLayout(null);
@@ -36,7 +46,10 @@ public class PanelPersona extends JPanel {
         oyenteDeMouse();
     }
 
-    public void oyenteDeMouse(){
+    /**
+     * Funcion donde se inicializa el evento de mouse para tomar la bebida.
+     */
+    private void oyenteDeMouse(){
 
         MouseListener eventoPanel = new MouseListener() {
             @Override
@@ -73,6 +86,9 @@ public class PanelPersona extends JPanel {
         this.addMouseListener(eventoPanel);
     }
 
+    /**
+     * Se actualiza el estado del producto para posteriormente cambiar a la imagen correspondiente.
+     */
     public void setEstadoProducto(){
         estados = "Producto";
         repaint();
