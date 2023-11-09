@@ -89,6 +89,7 @@ public class PanelComprador extends JPanel {
         }
         catch (NoHayProductoException e) {
             panelExpendedor.actualizarDepositosMonedas();
+            expendedor.getDepositoMonedasIngresadas().getElemento();
             expendedor.getVuelto();
             advertenciaMalUso.setText("No hay producto.");
         }

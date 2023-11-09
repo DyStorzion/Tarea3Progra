@@ -45,6 +45,7 @@ public class PanelMoneda extends JPanel {
             g.drawRect(0, 0, getWidth(), getHeight());
             g.setFont(new Font("Arial", Font.PLAIN, 24));
             g.drawString(String.valueOf(this.moneda.getSerie()), x-50, y);
+            g.drawString(String.valueOf("$" + this.moneda.getValor()), x - 25 , y + 20);
         }
 
     }
