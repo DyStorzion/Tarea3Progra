@@ -88,9 +88,11 @@ public class PanelComprador extends JPanel {
             advertenciaMalUso.setText("Haga click en el producto para retirarlo");
         }
         catch (NoHayProductoException e) {
+            panelExpendedor.actualizarDepositosMonedas();
             advertenciaMalUso.setText("No hay producto.");
         }
         catch (PagoIncorrectoException e) {
+            panelExpendedor.actualizarDepositosMonedas();
             advertenciaMalUso.setText("Pago incorrecto.");
         }
         catch (PagoInsuficienteException e) {
