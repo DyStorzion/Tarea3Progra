@@ -21,7 +21,7 @@ class SpriteTest {
      */
     @BeforeEach
     void setUp() {
-        sprite = new Sprite(0);
+        sprite = new Sprite();
     }
 
     /**

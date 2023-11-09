@@ -20,7 +20,7 @@ class Super8Test {
      */
     @BeforeEach
     void setUp() {
-        super8 = new Super8(15);
+        super8 = new Super8();
     }
 
     /**

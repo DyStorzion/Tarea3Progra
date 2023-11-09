@@ -6,11 +6,11 @@ package org.example.modelos;
  */
 public abstract class Bebida extends Producto{
     /**
-     * Se pasa el numero de serie dado por el expendedor de manera arbitraria.
-     * @param serie numero de serie de cada bebida.
+     *
+     *
      */
-    public Bebida(int serie) {
-        super(serie);
+    public Bebida() {
+        super();
     }
 
     /**
@@ -19,6 +19,6 @@ public abstract class Bebida extends Producto{
      */
     @Override
     public String toString() {
-        return "Producto: Bebida\n";
+        return super.toString() + "Producto: Bebida\n";
     }
 }

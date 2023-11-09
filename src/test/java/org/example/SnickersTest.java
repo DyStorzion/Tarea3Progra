@@ -20,7 +20,7 @@ class SnickersTest {
      */
     @BeforeEach
     void setUp() {
-        snicker = new Snickers(1);
+        snicker = new Snickers();
     }
 
     /**

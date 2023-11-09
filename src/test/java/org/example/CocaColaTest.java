@@ -19,7 +19,7 @@ class CocaColaTest {
      */
     @BeforeEach
     void setUp() {
-        cocacola = new CocaCola(15);
+        cocacola = new CocaCola();
     }
 
     /**
