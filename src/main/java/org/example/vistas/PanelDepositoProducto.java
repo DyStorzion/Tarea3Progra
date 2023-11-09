@@ -15,6 +15,7 @@ public class PanelDepositoProducto <T> extends JPanel {
     public PanelDepositoProducto(Deposito<T> deposito) {
         this.deposito = deposito;
         this.panelesProductos = new ArrayList<>();
+        this.setBackground(Color.darkGray);
         setLayout(new GridLayout(1, deposito.size()));
         for (int i = 0; i < deposito.size(); i++){
             T producto = deposito.getElemento();
@@ -35,6 +36,7 @@ public class PanelDepositoProducto <T> extends JPanel {
             panelesProductos.add(panelProducto);
             deposito.addElemento(producto);
         }
+        repaint();
     }
 
     public void quitarElementos(){

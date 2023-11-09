@@ -7,8 +7,9 @@ public class PanelPrincipal extends JPanel {
     PanelComprador panelComprador;
     PanelExpendedor panelExpendedor;
     public PanelPrincipal(){
-        this.panelComprador = new PanelComprador();
         this.panelExpendedor = new PanelExpendedor();
+        this.panelComprador = new PanelComprador(panelExpendedor);
+        panelExpendedor.setPanelComprador(panelComprador);
         this.setLayout(new GridLayout(1,2));
         this.add(panelComprador);
         this.add(panelExpendedor);

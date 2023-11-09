@@ -6,10 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PanelEnviarDatos extends JPanel {
-    JButton crearCompradorBoton;
-    JLabel descripcionCrearComprador;
-    ActionListener botonPresionado;
-    PanelComprador panelComprador;
+    private JButton crearCompradorBoton;
+    private JLabel descripcionCrearComprador;
+    private ActionListener botonPresionado;
+    private PanelComprador panelComprador;
 
     public PanelEnviarDatos(PanelComprador panelComprador) {
         this.panelComprador = panelComprador;

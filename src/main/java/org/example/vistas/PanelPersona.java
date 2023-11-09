@@ -17,7 +17,7 @@ public class PanelPersona extends JPanel {
     private JLabel labelArriba;
     private String queConsumio;
     private int vuelto;
-    PanelComprador panelComprador;
+    private PanelComprador panelComprador;
 
     public PanelPersona(JLabel panelArriba, PanelComprador panelComprador) {
         this.labelArriba = panelArriba;
@@ -41,7 +41,7 @@ public class PanelPersona extends JPanel {
         MouseListener eventoPanel = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (estados.equals("Bebida")){
+                if (estados.equals("Producto")){
                     labelArriba.setText("Consumi " + queConsumio + " y mi vuelto " + vuelto);
                     estados = "Esperando";
                     panelComprador.activarBebida();
@@ -73,8 +73,8 @@ public class PanelPersona extends JPanel {
         this.addMouseListener(eventoPanel);
     }
 
-    public void setEstadoABebida(){
-        estados = "Bebida";
+    public void setEstadoProducto(){
+        estados = "Producto";
         repaint();
     }
 
@@ -94,7 +94,7 @@ public class PanelPersona extends JPanel {
             case "Esperando":
                 g.drawImage(personaEsperando, 100, 0, this);
                 break;
-            case "Bebida":
+            case "Producto":
                 g.drawImage(personaConBebida, 100, 0, this);
                 break;
 

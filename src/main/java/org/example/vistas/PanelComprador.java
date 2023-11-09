@@ -9,19 +9,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PanelComprador extends JPanel {
-    public Comprador comprador;
+    private Comprador comprador;
 
-    PanelSeleccionBebidas menuBebidas;
-    PanelSeleccionMoneda menuMonedas;
-    PanelEnviarDatos menuDatos;
-    PanelPersona panelPersona;
-    Expendedor expendedor;
-    JLabel advertenciaMalUso;
-    JPanel panelAdvertancia;
-    Boolean hayBebidaAConsumir;
+    private PanelSeleccionBebidas menuBebidas;
+    private PanelSeleccionMoneda menuMonedas;
+    private PanelEnviarDatos menuDatos;
+    private PanelPersona panelPersona;
+    private Expendedor expendedor;
+    private JLabel advertenciaMalUso;
+    private JPanel panelAdvertancia;
+    private Boolean hayBebidaAConsumir;
+    private PanelExpendedor panelExpendedor;
 
-    public PanelComprador(){
-        expendedor = new Expendedor(5);
+    public PanelComprador(PanelExpendedor panelExpendedor){
+        this.panelExpendedor = panelExpendedor;
+        this.expendedor = panelExpendedor.getExpendedor();
         this.setBackground(Color.WHITE);
         this.setLayout(new BorderLayout());
 
@@ -68,10 +70,22 @@ public class PanelComprador extends JPanel {
 
         try {
             comprador = new Comprador(monedaSeleccionada, opcionBebida, expendedor);
+            panelExpendedor.actualizarDepositosMonedas();
+            panelExpendedor.actualizarProductoComprado();
+            panelExpendedor.actualizarDepositosProductos();
+            panelExpendedor.seComproProducto();
+            Moneda aux;
+            int vuelto = 0;
+            aux = expendedor.getVuelto();
+            while (aux != null) {
+                vuelto += aux.getValor();
+                aux = expendedor.getVuelto();
+            }
+            comprador.setVuelto(vuelto);
             panelPersona.setVuelto(comprador.cuantoVuelto());
             panelPersona.setQueConsumio(comprador.queConsumiste());
             menuDatos.desactivarBoton();
-            advertenciaMalUso.setText("Haga click en el comprador para consumir");
+            advertenciaMalUso.setText("Haga click en el producto para retirarlo");
         }
         catch (NoHayProductoException e) {
             advertenciaMalUso.setText("No hay producto.");
@@ -80,13 +94,26 @@ public class PanelComprador extends JPanel {
             advertenciaMalUso.setText("Pago incorrecto.");
         }
         catch (PagoInsuficienteException e) {
+            panelExpendedor.actualizarDepositosMonedas();
             advertenciaMalUso.setText("Pago insuficiente.");
         }
+    }
+
+    public PanelPersona getPanelPersona() {
+        return panelPersona;
+    }
+
+    public JLabel getAdvertenciaMalUso() {
+        return advertenciaMalUso;
     }
 
     public void activarBebida(){
         hayBebidaAConsumir = true;
         menuDatos.activarBoton();
+    }
+
+    public PanelExpendedor getPanelExpendedor() {
+        return panelExpendedor;
     }
 
     @Override

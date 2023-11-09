@@ -20,7 +20,9 @@ public class PanelExpendedor extends JPanel {
     private ArrayList<JPanel> panelesDepositoProducto;
     private PanelProducto productoComprado;
     private JPanel panelMitadSuperiorZonaInferior;
+    private PanelComprador panelComprador;
     private int cantidadBebidas;
+    private boolean seRetiroProducto;
     public PanelExpendedor(){
         this.expendedor = new Expendedor(3);
         this.panelesDepositoProducto = new ArrayList<>();
@@ -33,6 +35,7 @@ public class PanelExpendedor extends JPanel {
         this.depositoMonedasIngresadas = new PanelDepositoMoneda(expendedor.getDepositoMonedasIngresadas());
         this.depositoMonedasVuelto = new PanelDepositoMoneda(expendedor.getDepositoMonedas());
         this.productoComprado = new PanelProducto(expendedor.getProducto());
+        this.seRetiroProducto = false;
 
         this.setBackground(Color.darkGray);
         this.setLayout(new GridLayout(2,1));
@@ -97,13 +100,6 @@ public class PanelExpendedor extends JPanel {
             }
         });
 
-        productoComprado.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                eliminarProductoComprado();
-            }
-        });
 
         JPanel panelZonaInferior = new JPanel(new GridLayout(2,1));
         panelZonaInferior.setBackground(Color.lightGray);
@@ -119,8 +115,6 @@ public class PanelExpendedor extends JPanel {
 
         this.add(panelZonaSuperior);
         this.add(panelZonaInferior);
-
-
     }
 
     public void actualizarProductoComprado() {
@@ -134,7 +128,12 @@ public class PanelExpendedor extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                eliminarProductoComprado();
+                if(!seRetiroProducto) {
+                    panelComprador.getPanelPersona().setEstadoProducto();
+                    panelComprador.getAdvertenciaMalUso().setText("Presione el producto para consumirlo");
+                    eliminarProductoComprado();
+                    seRetiroProducto = true;
+                }
             }
         });
     }
@@ -150,7 +149,12 @@ public class PanelExpendedor extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                eliminarProductoComprado();
+                if(!seRetiroProducto) {
+                    panelComprador.getPanelPersona().setEstadoProducto();
+                    panelComprador.getAdvertenciaMalUso().setText("Presione el producto para consumirlo");
+                    eliminarProductoComprado();
+                    seRetiroProducto = true;
+                }
             }
         });
     }
@@ -176,6 +180,13 @@ public class PanelExpendedor extends JPanel {
         return expendedor.getProducto();
     }
 
+    public void setPanelComprador(PanelComprador panelComprador) {
+        this.panelComprador = panelComprador;
+    }
+
+    public void seComproProducto() {
+        this.seRetiroProducto = false;
+    }
 
     @Override
     public void paintComponents(Graphics g) {
