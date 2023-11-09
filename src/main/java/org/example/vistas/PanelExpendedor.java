@@ -22,11 +22,7 @@ public class PanelExpendedor extends JPanel {
     private JPanel panelMitadSuperiorZonaInferior;
     private int cantidadBebidas;
     public PanelExpendedor(){
-<<<<<<< HEAD
-        this.expendedor = new Expendedor(5);
-=======
         this.expendedor = new Expendedor(3);
->>>>>>> 224d3f9a9b2b1c34d8856d96826cd8c41c37c875
         this.panelesDepositoProducto = new ArrayList<>();
         this.cantidadBebidas = expendedor.getDepositoSnickers().size();
         this.depositoCocaCola = new PanelDepositoProducto<>(expendedor.getDepositoCoca());
