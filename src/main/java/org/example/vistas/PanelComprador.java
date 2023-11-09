@@ -14,6 +14,7 @@ public class PanelComprador extends JPanel {
     PanelSeleccionMoneda menuMonedas;
     PanelEnviarDatos menuDatos;
     Expendedor expendedor;
+    JLabel advertenciaMalUso;
 
     public PanelComprador(){
         expendedor = new Expendedor(5);
@@ -33,7 +34,31 @@ public class PanelComprador extends JPanel {
 
     public void crearComprador(){
         Moneda monedaSeleccionada = menuMonedas.getOpcion();
+        InfoProducto opcionBebida = menuBebidas.getOpcion();
+        System.out.println(monedaSeleccionada);
+        System.out.println(opcionBebida);
 
+
+        advertenciaMalUso = new JLabel();
+        try {
+            comprador = new Comprador(monedaSeleccionada, opcionBebida, expendedor);
+
+        } catch (NoHayProductoException e) {
+            advertenciaMalUso.setText("No hay producto.");
+
+        } catch (PagoIncorrectoException e) {
+            advertenciaMalUso.setText("Pago incorrecto.");
+            System.out.println("Pago incorrecto.");
+
+
+        } catch (PagoInsuficienteException e) {
+            advertenciaMalUso.setText("Pago insuficiente.");
+            System.out.println("dyasubghdjhsab");
+
+        }
+        finally {
+            this.add(advertenciaMalUso);
+        }
     }
 
 

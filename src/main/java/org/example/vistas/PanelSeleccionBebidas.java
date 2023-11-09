@@ -44,5 +44,32 @@ public class PanelSeleccionBebidas extends JPanel {
         botonesProductos.get(0).setSelected(true);
     }
 
+    public InfoProducto getOpcion(){
+        int opcion = 0;
+        for (int i = 0; i < botonesProductos.size(); i++){
+            if (botonesProductos.get(i).isSelected()){
+                opcion = i;
+                break;
+            }
+        }
+
+        switch (opcion){
+            case 0:
+                return InfoProducto.COCA;
+
+            case 1:
+                return InfoProducto.SPRITE;
+
+            case 2:
+                return  InfoProducto.FANTA;
+
+            case 3:
+                return  InfoProducto.SUPER8;
+            case 4:
+                return InfoProducto.SNICKERS;
+        }
+        return null;
+    }
+
 
 }

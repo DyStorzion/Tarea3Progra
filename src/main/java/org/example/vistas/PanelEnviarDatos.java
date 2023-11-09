@@ -28,6 +28,7 @@ public class PanelEnviarDatos extends JPanel {
         this.add(crearCompradorBoton, BorderLayout.PAGE_END);
         this.add(descripcionCrearComprador);
         seEnviaLosDatos();
+
     }
 
     private void seEnviaLosDatos(){
