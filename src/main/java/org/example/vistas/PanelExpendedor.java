@@ -22,8 +22,8 @@ public class PanelExpendedor extends JPanel {
     private ArrayList<JPanel> panelesDepositoProducto;
     private PanelProducto productoComprado;
     private int cantidadBebidas;
-    public PanelExpendedor(Expendedor expendedor){
-        this.expendedor = expendedor;
+    public PanelExpendedor(){
+        this.expendedor = new Expendedor(5);
         this.panelesDepositoProducto = new ArrayList<>();
         this.cantidadBebidas = expendedor.getDepositoSnickers().size();
         this.depositoCocaCola = new PanelDepositoProducto<>(expendedor.getDepositoCoca());
@@ -141,13 +141,9 @@ public class PanelExpendedor extends JPanel {
         depositoSuper8.actualizarUltimosElementos(expendedor.getDepositoSuper8().size());
     }
 
-    /*public void quitarProductos(){
-        depositoCocaCola.quitarElementos();
-        depositoFanta.quitarElementos();
-        depositoSprite.quitarElementos();
-        depositoSnickers.quitarElementos();
-        depositoSuper8.quitarElementos();
-    }*/
+    public Expendedor getExpendedor() {
+        return expendedor;
+    }
 
     public void actualizarDepositosMonedas() {
         depositoMonedasVuelto.actualizarUltimosElementos(expendedor.getDepositoMonedas().size());
