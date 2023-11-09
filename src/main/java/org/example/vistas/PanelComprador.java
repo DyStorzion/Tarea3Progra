@@ -4,6 +4,7 @@ import org.example.modelos.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,9 +14,11 @@ public class PanelComprador extends JPanel {
     PanelSeleccionBebidas menuBebidas;
     PanelSeleccionMoneda menuMonedas;
     PanelEnviarDatos menuDatos;
+    PanelPersona panelPersona;
     Expendedor expendedor;
     JLabel advertenciaMalUso;
     JPanel panelAdvertancia;
+    Boolean hayBebidaAConsumir;
 
     public PanelComprador(){
         expendedor = new Expendedor(5);
@@ -32,7 +35,14 @@ public class PanelComprador extends JPanel {
         menuMonedas = new PanelSeleccionMoneda(50, 50, 160,400);
         this.add(menuMonedas, BorderLayout.LINE_END);
 
+
+        hayBebidaAConsumir = false;
+
         mostrarEstadoDeCompra();
+
+        panelPersona = new PanelPersona(advertenciaMalUso, this);
+        this.add(panelPersona);
+
     }
 
     private void mostrarEstadoDeCompra(){
@@ -58,8 +68,11 @@ public class PanelComprador extends JPanel {
 
         try {
             comprador = new Comprador(monedaSeleccionada, opcionBebida, expendedor);
-            advertenciaMalUso.setText("Todo bien con la compra.");
-
+            panelPersona.setVuelto(comprador.cuantoVuelto());
+            panelPersona.setQueConsumio(comprador.queConsumiste());
+            panelPersona.setEstadoABebida();
+            menuDatos.desactivarBoton();
+            advertenciaMalUso.setText("Haga click en el comprador para consumir");
         }
         catch (NoHayProductoException e) {
             advertenciaMalUso.setText("No hay producto.");
@@ -70,6 +83,11 @@ public class PanelComprador extends JPanel {
         catch (PagoInsuficienteException e) {
             advertenciaMalUso.setText("Pago insuficiente.");
         }
+    }
+
+    public void activarBebida(){
+        hayBebidaAConsumir = true;
+        menuDatos.activarBoton();
     }
 
     @Override

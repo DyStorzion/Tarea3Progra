@@ -41,4 +41,11 @@ public class PanelEnviarDatos extends JPanel {
         crearCompradorBoton.addActionListener(botonPresionado);
     }
 
+    public void desactivarBoton(){
+        crearCompradorBoton.setEnabled(false);
+    }
+    public void activarBoton(){
+        crearCompradorBoton.setEnabled(true);
+    }
+
 }
