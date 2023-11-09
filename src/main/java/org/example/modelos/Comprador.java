@@ -25,14 +25,11 @@ public class Comprador {
         expendedor.comprarProducto(moneda, opcionProducto);
         Producto p = expendedor.getProducto();
         sonido = p.consumir();
-        Moneda aux;
-        aux = expendedor.getVuelto();
-        while (aux != null) {
-            vuelto += aux.getValor();
-            aux = expendedor.getVuelto();
-        }
     }
 
+    public void setVuelto(int vuelto) {
+        this.vuelto = vuelto;
+    }
     /**
      *
      * @return entero con el vuelto del comprador
