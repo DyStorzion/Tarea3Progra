@@ -13,7 +13,7 @@ import java.awt.*;
 public class PanelComprador extends JPanel {
     private Comprador comprador;
 
-    private PanelSeleccionBebidas menuBebidas;
+    private PanelSeleccionProductos menuBebidas;
     private PanelSeleccionMoneda menuMonedas;
     private PanelEnviarDatos menuDatos;
     private PanelPersona panelPersona;
@@ -38,7 +38,7 @@ public class PanelComprador extends JPanel {
         menuDatos = new PanelEnviarDatos(this);
         this.add(menuDatos, BorderLayout.SOUTH);
 
-        menuBebidas = new PanelSeleccionBebidas(50, 50, 160, 400);
+        menuBebidas = new PanelSeleccionProductos(50, 50, 160, 400);
         this.add(menuBebidas, BorderLayout.LINE_START);
 
 
@@ -145,6 +145,5 @@ public class PanelComprador extends JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-
     }
 }

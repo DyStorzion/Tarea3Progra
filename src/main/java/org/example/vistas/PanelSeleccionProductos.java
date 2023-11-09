@@ -7,14 +7,14 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class PanelSeleccionBebidas extends JPanel {
+public class PanelSeleccionProductos extends JPanel {
 
     ArrayList<JRadioButton> botonesProductos;
 
     ButtonGroup grupoBotonesProductos;
 
     ArrayList<PanelProducto> panelesProductos;
-    public PanelSeleccionBebidas(int x, int y, int ancho, int alto) {
+    public PanelSeleccionProductos(int x, int y, int ancho, int alto) {
         this.setBounds(x, y, ancho, alto);
         setLayout(new GridLayout(5, 2));
 
