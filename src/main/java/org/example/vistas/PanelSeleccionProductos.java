@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Clase para administrar el panel de la izquierda de panel comprador donde se seleccionan las bebidas.
+ * Clase para administrar el panel de la izquierda de panel comprador donde se seleccionan los Productos.
  * @author Carlos Tomas Alvarez Norambuena
  */
 public class PanelSeleccionProductos extends JPanel {
@@ -19,7 +19,11 @@ public class PanelSeleccionProductos extends JPanel {
 
     private ArrayList<PanelProducto> panelesProductos;
 
-
+    /**
+     * Constructor de la clase
+     * Se añade los detalles esteticos del tipo de layout y se inicializan los botones junto a los paneles de imagenes
+     * de las bebidas y dulces.
+     */
     public PanelSeleccionProductos() {
         setLayout(new GridLayout(5, 2));
 
@@ -49,6 +53,10 @@ public class PanelSeleccionProductos extends JPanel {
         botonesProductos.get(0).setSelected(true);
     }
 
+    /**
+     * Se obtiene el producto que se va a comprar.
+     * @return producto a comprar.
+     */
     public InfoProducto getOpcion(){
         int opcion = 0;
         for (int i = 0; i < botonesProductos.size(); i++){
@@ -76,5 +84,8 @@ public class PanelSeleccionProductos extends JPanel {
         return null;
     }
 
-
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+    }
 }
